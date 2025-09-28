@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <style>
+      .laptop-stroke { fill: none; stroke: #2c3e50; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .laptop-fill { fill: #ecf0f1; }
+      .screen-fill { fill: #34495e; }
+      .keyboard-fill { fill: #bdc3c7; }
+    </style>
+  </defs>
+  
+  <!-- Laptop base -->
+  <rect x="80" y="320" width="352" height="20" rx="10" class="laptop-fill laptop-stroke"/>
+  
+  <!-- Laptop screen -->
+  <rect x="100" y="120" width="312" height="200" rx="8" class="laptop-fill laptop-stroke"/>
+  <rect x="120" y="140" width="272" height="160" rx="4" class="screen-fill"/>
+  
+  <!-- Screen content (code editor mockup) -->
+  <line x1="140" y1="160" x2="200" y2="160" stroke="#e74c3c" stroke-width="2"/>
+  <line x1="140" y1="180" x2="280" y2="180" stroke="#2ecc71" stroke-width="2"/>
+  <line x1="160" y1="200" x2="320" y2="200" stroke="#3498db" stroke-width="2"/>
+  <line x1="140" y1="220" x2="240" y2="220" stroke="#f39c12" stroke-width="2"/>
+  <line x1="160" y1="240" x2="300" y2="240" stroke="#9b59b6" stroke-width="2"/>
+  <line x1="140" y1="260" x2="180" y2="260" stroke="#e74c3c" stroke-width="2"/>
+  
+  <!-- Keyboard -->
+  <rect x="120" y="335" width="272" height="80" rx="4" class="keyboard-fill laptop-stroke"/>
+  
+  <!-- Keyboard keys -->
+  <g fill="#95a5a6" stroke="#7f8c8d" stroke-width="1">
+    <rect x="130" y="345" width="12" height="8" rx="1"/>
+    <rect x="145" y="345" width="12" height="8" rx="1"/>
+    <rect x="160" y="345" width="12" height="8" rx="1"/>
+    <rect x="175" y="345" width="12" height="8" rx="1"/>
+    <rect x="190" y="345" width="12" height="8" rx="1"/>
+    <rect x="205" y="345" width="12" height="8" rx="1"/>
+    <rect x="220" y="345" width="12" height="8" rx="1"/>
+    <rect x="235" y="345" width="12" height="8" rx="1"/>
+    <rect x="250" y="345" width="12" height="8" rx="1"/>
+    <rect x="265" y="345" width="12" height="8" rx="1"/>
+    <rect x="280" y="345" width="12" height="8" rx="1"/>
+    <rect x="295" y="345" width="12" height="8" rx="1"/>
+    <rect x="310" y="345" width="12" height="8" rx="1"/>
+    <rect x="325" y="345" width="12" height="8" rx="1"/>
+    <rect x="340" y="345" width="12" height="8" rx="1"/>
+    <rect x="355" y="345" width="12" height="8" rx="1"/>
+    <rect x="370" y="345" width="12" height="8" rx="1"/>
+  </g>
+  
+  <!-- Trackpad -->
+  <rect x="200" y="360" width="112" height="64" rx="4" class="laptop-fill laptop-stroke"/>
+</svg>
