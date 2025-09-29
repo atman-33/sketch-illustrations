@@ -90,6 +90,83 @@ export const illustrationApi = {
   },
 };
 
+const isBrowserEnvironment = () =>
+  typeof window !== "undefined" &&
+  typeof document !== "undefined" &&
+  typeof document.createElement === "function";
+
+const fetchSvgContent = async (svgPath: string): Promise<string | null> => {
+  try {
+    const response = await fetch(svgPath);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch SVG: ${response.status}`);
+    }
+    return await response.text();
+  } catch (error) {
+    console.error("Failed to get SVG content:", error);
+    return null;
+  }
+};
+
+const loadImageFromUrl = (url: string): Promise<HTMLImageElement> =>
+  new Promise((resolve, reject) => {
+    const image = new Image();
+    image.crossOrigin = "anonymous";
+    image.onload = () => resolve(image);
+    image.onerror = (_event) => {
+      reject(new Error("Failed to load SVG image"));
+    };
+    image.src = url;
+  });
+
+const renderSvgToPng = async (
+  svgContent: string,
+  width: number | undefined,
+  height: number | undefined,
+  transparent: boolean
+): Promise<Blob> => {
+  if (!isBrowserEnvironment()) {
+    throw new Error("PNG conversion is only supported in the browser.");
+  }
+
+  const svgBlob = new Blob([svgContent], { type: "image/svg+xml" });
+  const blobUrl = URL.createObjectURL(svgBlob);
+
+  try {
+    const image = await loadImageFromUrl(blobUrl);
+    const targetWidth = width ?? (image.width || 512);
+    const targetHeight = height ?? (image.height || 512);
+
+    const canvas = document.createElement("canvas");
+    canvas.width = targetWidth;
+    canvas.height = targetHeight;
+
+    const context = canvas.getContext("2d");
+    if (!context) {
+      throw new Error("Failed to acquire 2D context");
+    }
+
+    if (!transparent) {
+      context.fillStyle = "#ffffff";
+      context.fillRect(0, 0, targetWidth, targetHeight);
+    }
+
+    context.drawImage(image, 0, 0, targetWidth, targetHeight);
+
+    return await new Promise<Blob>((resolve, reject) => {
+      canvas.toBlob((blob) => {
+        if (blob) {
+          resolve(blob);
+        } else {
+          reject(new Error("Canvas toBlob() returned null"));
+        }
+      }, "image/png");
+    });
+  } finally {
+    URL.revokeObjectURL(blobUrl);
+  }
+};
+
 // PNG conversion API
 export const conversionApi = {
   /**
@@ -100,23 +177,24 @@ export const conversionApi = {
     options: ConversionOptions
   ): Promise<ApiResponse<Blob>> {
     try {
-      const response = await fetch("/api/png-convert", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          svgPath,
-          ...options,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error(`Conversion failed: ${response.status}`);
+      if (!isBrowserEnvironment()) {
+        throw new Error("PNG conversion requires a browser environment");
       }
 
-      const blob = await response.blob();
-      return { success: true, data: blob };
+      const svgContent = await fetchSvgContent(svgPath);
+      if (!svgContent) {
+        throw new Error("Failed to load SVG content");
+      }
+
+      const { width, height, transparent = true } = options;
+      const pngBlob = await renderSvgToPng(
+        svgContent,
+        width,
+        height,
+        transparent
+      );
+
+      return { success: true, data: pngBlob };
     } catch (error) {
       console.error("PNG conversion failed:", error);
       return {
@@ -196,16 +274,7 @@ export const actionUtils = {
    * Get SVG content from path
    */
   async getSvgContent(svgPath: string): Promise<string | null> {
-    try {
-      const response = await fetch(svgPath);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch SVG: ${response.status}`);
-      }
-      return await response.text();
-    } catch (error) {
-      console.error("Failed to get SVG content:", error);
-      return null;
-    }
+    return fetchSvgContent(svgPath);
   },
 
   /**

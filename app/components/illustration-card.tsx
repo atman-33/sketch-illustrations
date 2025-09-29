@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent } from "~/components/ui/card";
-import { actionUtils } from "~/lib/api";
+import { actionUtils, conversionApi } from "~/lib/api";
 import type { ActionStatus, Illustration } from "~/lib/types";
 
 type IllustrationCardProps = {
@@ -30,29 +30,40 @@ export function IllustrationCard({
     lg: "w-64 h-64",
   };
 
-  const handleCopySvg = async () => {
+  const handleCopyPng = async () => {
     setCopyStatus("processing");
     try {
-      const svgContent = await actionUtils.getSvgContent(illustration.svgPath);
-      if (!svgContent) {
-        throw new Error("Failed to load SVG content");
+      const { width = 512, height = 512 } = illustration.dimensions ?? {};
+      const conversionResult = await conversionApi.convertToPng(
+        illustration.svgPath,
+        {
+          width,
+          height,
+          transparent: true,
+          quality: 90,
+        }
+      );
+
+      if (!(conversionResult.success && conversionResult.data)) {
+        throw new Error(conversionResult.error || "PNG conversion failed");
       }
 
-      const success = await actionUtils.copyToClipboard(svgContent, "svg");
+      const pngBlob = conversionResult.data;
+      const success = await actionUtils.copyToClipboard(pngBlob, "png");
       if (success) {
         setCopyStatus("success");
-        toast.success("SVG copied to clipboard!");
+        toast.success("PNG copied to clipboard!");
         setTimeout(() => setCopyStatus("idle"), 2000);
       } else {
         // Fallback to download
-        const filename = actionUtils.generateFilename(illustration, "svg");
-        actionUtils.triggerDownload(svgContent, filename);
-        toast.info("SVG downloaded (clipboard not available)");
+        const filename = actionUtils.generateFilename(illustration, "png");
+        actionUtils.triggerDownload(pngBlob, filename);
+        toast.info("PNG downloaded (clipboard not available)");
         setCopyStatus("idle");
       }
     } catch (_error) {
       setCopyStatus("error");
-      toast.error("Failed to copy SVG");
+      toast.error("Failed to copy PNG");
       setTimeout(() => setCopyStatus("idle"), 2000);
     }
   };
@@ -130,7 +141,7 @@ export function IllustrationCard({
             <Button
               className="flex-1"
               disabled={copyStatus === "processing"}
-              onClick={handleCopySvg}
+              onClick={handleCopyPng}
               size="sm"
               variant="outline"
             >
