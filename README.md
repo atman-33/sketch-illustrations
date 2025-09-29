@@ -1,139 +1,109 @@
-# React Router + Cloudflare Boilerplate
+# sketch-illustrations
 
-A modern, production-ready template for building full-stack React applications using React Router, Cloudflare (Pages, Workers, D1), Drizzle ORM, and `better-auth`.
+A React Router 7 application that showcases a curated catalog of hand-drawn, CC0-licensed SVG illustrations. Users can search, filter, preview, copy, or download artwork that is optimized for presentations, whiteboards, and product mockups. All interaction currently relies on typed mock data so the experience works out of the box without external services.
 
 ## Features
 
-- **Framework**: [React Router v7](https://reactrouter.com/)
-- **Platform**: [Cloudflare](https://www.cloudflare.com/) (Pages, Workers, D1)
-- **ORM**: [Drizzle ORM](https://orm.drizzle.team/)
-- **Authentication**: [better-auth](https://github.com/drwpow/better-auth)
-- **UI/Styling**: [Tailwind CSS](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.com/), [Lucide Icons](https://lucide.dev/)
-- **Tooling**: [Vite](https://vitejs.dev/), [Biome](https://biomejs.dev/), [TypeScript](https://www.typescriptlang.org/), [Vitest](https://vitest.dev/)
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
+- **Home experience** – Hero messaging, featured illustrations, and highlighted categories sourced from `app/lib/server/mock-data.server.ts`.
+- **Category explorer** – `/categories` lists all mock categories with grid/list toggle, keyword filtering, and quick navigation into detail pages.
+- **Category detail pages** – `/category/:slug` shows all illustrations for a category, with client-side tag filters and search.
+- **Search workspace** – `/search` supports combined keyword + category filtering, showing live results and applied filter chips.
+- **Copy & download utilities** – SVGs can be copied as raw markup or rendered to PNG inside the browser via an offscreen canvas (no backend dependency). PNG downloads fall back automatically when the Clipboard API is unavailable.
+- **Responsive UI kit** – Built with Tailwind CSS 4, Radix primitives, `lucide-react` icons, and custom components in `app/components`.
 
-## Getting Started
+## Tech stack
 
-### 1. Installation
+- **Runtime**: React 19, React Router v7 (file-system routes)
+- **Build tooling**: Vite 6, @react-router/dev, Cloudflare Vite plugin
+- **Styling**: Tailwind CSS 4 + Tailwind Merge, Radix UI components
+- **Data / Utilities**: Zod for typing, Drizzle ORM schemas (future integration), Sonner toast notifications
+- **Quality & DX**: TypeScript 5.8, Biome for lint + format, Vitest, Husky githooks, Wrangler CLI integration
 
-Install the dependencies:
+## Getting started
 
-```bash
-npm install
-```
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
+2. **Environment variables** (optional for local mock setup)
+   ```bash
+   cp .env.example .env
+   cp .env.example .dev.vars
+   ```
+   > The current UI uses in-repo mock data. The `.env` files prepare the app for future Drizzle/D1 + better-auth usage.
+3. **Start the dev server**
+   ```bash
+   npm run dev
+   ```
+   This launches `react-router dev` with an Edge-compatible SSR runtime at http://localhost:5173.
 
-### 2. Environment Variables
-
-Copy the example environment file to both `.dev.vars` (for local development with Wrangler) and `.env` (for other scripts like Drizzle Kit).
-
-```bash
-cp .env.example .dev.vars
-cp .env.example .env
-```
-
-Be sure to fill in the required variables in both files.
-
-### 3. Database Setup
-
-Run the initial database migrations for your local D1 database.
-
-```bash
-# Generate the auth schema
-npm run auth:db:generate
-
-# Migrate the main schema
-npm run db:migrate
-```
-
-### 4. Start Development
-
-Start the development server with HMR:
+### Production build & preview
 
 ```bash
-npm run dev
+npm run build
+npm run preview
 ```
 
-Your application will be available at `http://localhost:5173`.
-
-## Available Scripts
-
-- `dev`: Starts the development server with HMR.
-- `build`: Creates a production-ready build of your application.
-- `preview`: Serves the production build locally for previewing.
-- `deploy`: Builds and deploys your application to Cloudflare.
-- `db:generate`: Generates Drizzle ORM migration files based on schema changes.
-- `db:migrate`: Applies pending migrations to the local D1 database.
-- `db:migrate-production`: Applies pending migrations to the production D1 database.
-- `auth:db:generate`: Generates the database schema for `better-auth`.
-- `check`: Runs type checking and Biome for code quality.
-- `biome:check`: Lints and formats the codebase using Biome.
-- `test`: Runs tests using Vitest.
-
-## Deployment
-
-Deployment is done using the Wrangler CLI.
-
-### 1. Create Production D1 Database
-
-First, create a D1 database in your Cloudflare account.
-
-```bash
-npx wrangler d1 create <your-database-name>
-```
-
-### 2. Configure Wrangler
-
-Update your `wrangler.jsonc` file with the `database_name` and `database_id` from the previous step.
-
-```jsonc
-// wrangler.jsonc
-"d1_databases": [
-  {
-    "binding": "DB",
-    "database_name": "<your-database-name>",
-    "database_id": "<your-database-id>"
-  }
-]
-```
-
-### 3. Run Production Migration
-
-Update your `drizzle.config.ts` to point to your production database, and then run the production migration command:
-
-```bash
-npm run db:migrate-production
-```
-
-### 4. Deploy to Cloudflare
-
-To build and deploy your application to production:
+### Deployment (Cloudflare Workers / Pages)
 
 ```bash
 npm run deploy
 ```
 
-## Authentication
+Ensure you are authenticated with `wrangler` and have configured the project in `wrangler.jsonc` before deploying.
 
-This boilerplate uses [`better-auth`](https://github.com/drwpow/better-auth) for authentication, pre-configured for GitHub. Key files include:
+## Available scripts
 
-- `auth.ts`: Main `better-auth` server configuration.
-- `app/lib/auth/auth.server.ts`: Server-side authentication utilities.
-- `app/lib/auth/auth-client.ts`: Client-side authentication utilities.
-- `app/routes/api.auth.$`: Route for handling authentication callbacks.
+| Script | Description |
+| --- | --- |
+| `npm run dev` | Start the Edge-compatible development server. |
+| `npm run build` | Build the production bundle (React Router asset server). |
+| `npm run preview` | Preview the production build locally. |
+| `npm run deploy` | Build and deploy via Wrangler. |
+| `npm run typecheck` | Generate type definitions (wrangler + react-router) and run TypeScript project references. |
+| `npm run check` | Typecheck followed by Biome lint/format. |
+| `npm run biome:check` | Run Biome lint with auto-fixes and formatting. |
+| `npm run test` | Execute Vitest test suites. |
+| `npm run db:*` | Scaffold and run Drizzle migrations (local + production). |
+| `npm run auth:db:generate` | Generate better-auth schema against a local D1 instance. |
 
-## Styling
+## Project structure highlights
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) and [shadcn/ui](https://ui.shadcn.com/) for a modern, component-based styling experience.
-
-To add new `shadcn/ui` components, you can use their CLI:
-
-```bash
-npx shadcn-ui@latest add <component-name>
 ```
+app/
+  components/            # Reusable UI building blocks and hooks
+  lib/                   # Mock data, API helpers, type definitions, utilities
+  routes/                # React Router route modules (layouts, pages, metadata)
+  root.tsx               # Global document, theme, and router wiring
+  entry.server.tsx       # Edge/SSR entry point
+public/illustrations/    # CC0 SVG assets served statically
+workers/                 # Cloudflare Worker entry (request handler)
+database/                # Drizzle ORM schemas (not wired to mock app yet)
+```
+
+## PNG conversion details
+
+- Conversion is handled entirely in the browser within `conversionApi.convertToPng` (`app/lib/api.ts`).
+- The helper fetches an illustration's SVG, draws it to an offscreen `<canvas>`, and returns a PNG `Blob`.
+- `use-copy-download` and components like `IllustrationCard` use this blob to drive clipboard copy or file download actions.
+- Because the workflow is client-only, there is no need to manage WASM modules or backend endpoints, which simplifies Cloudflare deployment.
+
+## Assets & licensing
+
+All sample illustrations live under `public/illustrations` and are treated as CC0 assets. Replace these files with your own artwork as needed; update the mock data or wire the pages to a real data source for production usage.
+
+## Future integration notes
+
+- Drizzle + Cloudflare D1 schemas exist but are not currently queried. When you connect to a live database, replace `app/lib/server/mock-data.server.ts` with loaders/actions that read from Drizzle.
+- Authentication scaffolding (`better-auth`) is provisioned by scripts but unused by the mock UI. Remove or implement it depending on product requirements.
+- If you reintroduce server-side SVG rendering (e.g., via Resvg), keep in mind the deployment environment (Cloudflare Edge vs Node) and avoid Node-only APIs in Workers.
+
+## Contributing
+
+1. Create a feature branch (`git checkout -b feature/...`).
+2. Run `npm run check` before opening a PR to ensure linting, formatting, and type checks pass.
+3. Add or update tests with `npm run test` when you change logic or components.
 
 ---
 
-Built with ❤️ using React Router and Cloudflare.
+Built with ❤️ to help designers and developers reuse sketch-style illustrations quickly.
