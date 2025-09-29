@@ -6,62 +6,30 @@ import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
-import type { SearchResult } from "~/lib/types";
+import {
+  getIllustrationsByCategory,
+  getMockSearchResults,
+  mockCategories,
+} from "~/lib/server/mock-data.server";
 import type { Route } from "./+types/route";
-
-// Mock data - will be replaced with actual API calls
-const mockSearchResults: SearchResult = {
-  illustrations: [
-    {
-      id: "work-laptop",
-      title: "Laptop Computer",
-      tags: ["computer", "laptop", "device", "work"],
-      category: "work",
-      license: "CC0",
-      svgPath: "/illustrations/work/laptop.svg",
-      dimensions: { width: 512, height: 512 },
-    },
-    {
-      id: "people-developer",
-      title: "Software Developer",
-      tags: ["developer", "coding", "person", "work"],
-      category: "people",
-      license: "CC0",
-      svgPath: "/illustrations/people/developer.svg",
-      dimensions: { width: 512, height: 512 },
-    },
-    {
-      id: "objects-coffee",
-      title: "Coffee Cup",
-      tags: ["coffee", "drink", "work", "break"],
-      category: "objects",
-      license: "CC0",
-      svgPath: "/illustrations/objects/coffee.svg",
-      dimensions: { width: 512, height: 512 },
-    },
-  ],
-  total: 3,
-  query: "",
-};
-
-const mockCategories = [
-  { slug: "work", name: "Work & Business", count: 2 },
-  { slug: "people", name: "People & Characters", count: 1 },
-  { slug: "objects", name: "Objects & Items", count: 1 },
-];
 
 // biome-ignore lint/suspicious/useAwait: ignore
 export async function loader({ request }: Route.LoaderArgs) {
   const url = new URL(request.url);
-  const query = url.searchParams.get("q") || "";
+  const query =
+    url.searchParams.get("query") || url.searchParams.get("q") || "";
   const category = url.searchParams.get("category") || "";
 
-  // In a real implementation, this would fetch from search API
-  // const searchResults = await illustrationApi.searchIllustrations(query, category);
+  const searchResults = getMockSearchResults(query, category || undefined);
+  const categories = mockCategories.map((item) => ({
+    slug: item.slug,
+    name: item.name,
+    count: getIllustrationsByCategory(item.slug).length,
+  }));
 
   return {
-    searchResults: { ...mockSearchResults, query },
-    categories: mockCategories,
+    searchResults,
+    categories,
     initialQuery: query,
     initialCategory: category,
   };

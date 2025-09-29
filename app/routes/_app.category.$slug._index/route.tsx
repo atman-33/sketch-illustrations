@@ -5,61 +5,30 @@ import { IllustrationCard } from "~/components/illustration-card";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
-import type { Illustration } from "~/lib/types";
+import { HTTP_STATUS } from "~/lib/constants/http-status";
+import {
+  getIllustrationsByCategory,
+  getMockCategory,
+} from "~/lib/server/mock-data.server";
 import type { Route } from "./+types/route";
-
-// Mock data - will be replaced with actual API calls
-const mockIllustrations: Illustration[] = [
-  {
-    id: "work-laptop",
-    title: "Laptop Computer",
-    tags: ["computer", "laptop", "device", "work"],
-    category: "work",
-    license: "CC0",
-    svgPath: "/illustrations/work/laptop.svg",
-    dimensions: { width: 512, height: 512 },
-  },
-  {
-    id: "work-meeting",
-    title: "Team Meeting",
-    tags: ["meeting", "team", "collaboration", "business"],
-    category: "work",
-    license: "CC0",
-    svgPath: "/illustrations/work/meeting.svg",
-    dimensions: { width: 512, height: 512 },
-  },
-  {
-    id: "work-presentation",
-    title: "Business Presentation",
-    tags: ["presentation", "chart", "business", "analytics"],
-    category: "work",
-    license: "CC0",
-    svgPath: "/illustrations/work/presentation.svg",
-    dimensions: { width: 512, height: 512 },
-  },
-];
-
-const mockCategory = {
-  slug: "work",
-  name: "Work & Business",
-  description:
-    "Professional illustrations perfect for business presentations, blog posts, and professional documentation",
-  icon: "briefcase",
-  illustrationCount: 45,
-};
 
 // biome-ignore lint/suspicious/useAwait: ignore
 export async function loader({ params }: Route.LoaderArgs) {
-  // biome-ignore lint/correctness/noUnusedVariables: ignore
   const { slug } = params;
+  if (!slug) {
+    throw new Response("Category not found", { status: HTTP_STATUS.notFound });
+  }
 
-  // In a real implementation, this would fetch from an API
-  // const category = await illustrationApi.getCategoryBySlug(slug);
-  // const illustrations = await illustrationApi.getIllustrationsByCategory(slug);
+  const category = getMockCategory(slug);
+  if (!category) {
+    throw new Response("Category not found", { status: HTTP_STATUS.notFound });
+  }
+
+  const illustrations = getIllustrationsByCategory(slug);
 
   return {
-    category: mockCategory,
-    illustrations: mockIllustrations,
+    category,
+    illustrations,
   };
 }
 
@@ -69,6 +38,7 @@ export default function CategoryDetailPage({
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const { category, illustrations } = loaderData;
+  const totalAvailable = category.illustrationCount ?? illustrations.length;
 
   // Get all unique tags from illustrations
   const allTags = Array.from(
@@ -113,9 +83,12 @@ export default function CategoryDetailPage({
       {/* Category Header */}
       <div className="mb-8">
         <h1 className="mb-2 font-bold text-3xl">{category.name}</h1>
-        <p className="mb-4 text-muted-foreground">{category.description}</p>
+        <p className="mb-4 text-muted-foreground">
+          {category.description ??
+            "Explore curated illustrations in this theme."}
+        </p>
         <Badge variant="secondary">
-          {category.illustrationCount} illustrations
+          {totalAvailable.toString()} illustrations
         </Badge>
       </div>
 
@@ -208,7 +181,7 @@ export default function CategoryDetailPage({
 
       {/* Load More (for future pagination) */}
       {filteredIllustrations.length > 0 &&
-        filteredIllustrations.length < category.illustrationCount && (
+        filteredIllustrations.length < totalAvailable && (
           <div className="mt-12 text-center">
             <Button variant="outline">Load More Illustrations</Button>
           </div>

@@ -4,46 +4,12 @@ import { IllustrationCard } from "~/components/illustration-card";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
-import type { Illustration } from "~/lib/types";
+import {
+  featuredIllustrations,
+  getAllIllustrations,
+  popularCategories,
+} from "~/lib/server/mock-data.server";
 import type { Route } from "./+types/route";
-
-// Mock data - will be replaced with actual API calls
-const featuredIllustrations: Illustration[] = [
-  {
-    id: "work-laptop",
-    title: "Laptop Computer",
-    tags: ["computer", "laptop", "device", "work"],
-    category: "work",
-    license: "CC0",
-    svgPath: "/illustrations/work/laptop.svg",
-    dimensions: { width: 512, height: 512 },
-  },
-  {
-    id: "people-developer",
-    title: "Software Developer",
-    tags: ["developer", "coding", "person", "work"],
-    category: "people",
-    license: "CC0",
-    svgPath: "/illustrations/people/developer.svg",
-    dimensions: { width: 512, height: 512 },
-  },
-  {
-    id: "objects-coffee",
-    title: "Coffee Cup",
-    tags: ["coffee", "drink", "work", "break"],
-    category: "objects",
-    license: "CC0",
-    svgPath: "/illustrations/objects/coffee.svg",
-    dimensions: { width: 512, height: 512 },
-  },
-];
-
-const popularCategories = [
-  { slug: "work", name: "Work & Business", count: 45 },
-  { slug: "people", name: "People & Characters", count: 32 },
-  { slug: "technology", name: "Technology & Digital", count: 38 },
-  { slug: "education", name: "Education & Learning", count: 25 },
-];
 
 // biome-ignore lint/suspicious/useAwait: ignore
 export async function loader() {
@@ -51,7 +17,7 @@ export async function loader() {
   return {
     featuredIllustrations,
     popularCategories,
-    totalIllustrations: 168,
+    totalIllustrations: getAllIllustrations().length,
   };
 }
 

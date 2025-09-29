@@ -5,53 +5,8 @@ import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
+import { mockCategories } from "~/lib/server/mock-data.server";
 import type { Route } from "./+types/route";
-
-// Mock data - will be replaced with actual API calls
-const mockCategories = [
-  {
-    slug: "work",
-    name: "Work & Business",
-    description: "Professional illustrations for business contexts",
-    icon: "briefcase",
-    illustrationCount: 45,
-  },
-  {
-    slug: "people",
-    name: "People & Characters",
-    description: "Human figures and character illustrations",
-    icon: "users",
-    illustrationCount: 32,
-  },
-  {
-    slug: "objects",
-    name: "Objects & Items",
-    description: "Everyday objects and tools",
-    icon: "package",
-    illustrationCount: 28,
-  },
-  {
-    slug: "nature",
-    name: "Nature & Environment",
-    description: "Plants, animals, and natural elements",
-    icon: "leaf",
-    illustrationCount: 21,
-  },
-  {
-    slug: "technology",
-    name: "Technology & Digital",
-    description: "Devices, apps, and tech concepts",
-    icon: "smartphone",
-    illustrationCount: 38,
-  },
-  {
-    slug: "education",
-    name: "Education & Learning",
-    description: "Academic and educational content",
-    icon: "graduation-cap",
-    illustrationCount: 25,
-  },
-];
 
 // biome-ignore lint/suspicious/useAwait: ignore
 // biome-ignore lint/correctness/noUnusedFunctionParameters: ignore
@@ -67,11 +22,16 @@ export default function CategoriesPage({ loaderData }: Route.ComponentProps) {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const { categories } = loaderData;
 
-  const filteredCategories = categories.filter(
-    (category) =>
-      category.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      category.description.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredCategories = categories.filter((category) => {
+    const normalizedQuery = searchQuery.toLowerCase();
+    const nameMatches = category.name.toLowerCase().includes(normalizedQuery);
+    const description = category.description ?? "";
+    const descriptionMatches = description
+      .toLowerCase()
+      .includes(normalizedQuery);
+
+    return nameMatches || descriptionMatches;
+  });
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -130,13 +90,13 @@ export default function CategoriesPage({ loaderData }: Route.ComponentProps) {
                     {category.name}
                   </CardTitle>
                   <Badge variant="secondary">
-                    {category.illustrationCount} items
+                    {(category.illustrationCount ?? 0).toString()} items
                   </Badge>
                 </div>
               </CardHeader>
               <CardContent>
                 <p className="mb-4 text-muted-foreground text-sm">
-                  {category.description}
+                  {category.description ?? "Discover curated illustrations."}
                 </p>
                 <div className="flex items-center justify-between">
                   <Button
@@ -173,7 +133,10 @@ export default function CategoriesPage({ loaderData }: Route.ComponentProps) {
       <div className="mt-12 text-center">
         <p className="text-muted-foreground text-sm">
           {categories.length} categories •{" "}
-          {categories.reduce((acc, cat) => acc + cat.illustrationCount, 0)}{" "}
+          {categories.reduce(
+            (acc, cat) => acc + (cat.illustrationCount ?? 0),
+            0
+          )}{" "}
           total illustrations
         </p>
       </div>

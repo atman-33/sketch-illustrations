@@ -47,6 +47,11 @@ export const ConversionOptionsSchema = z.object({
   transparent: z.boolean().default(true),
   quality: z.number().min(0).max(100).default(90),
 });
+export const ConversionRequestSchema = ConversionOptionsSchema.extend({
+  svgPath: z.string().min(1, "SVG path is required"),
+});
+
+export type ConversionRequest = z.infer<typeof ConversionRequestSchema>;
 
 export type ConversionOptions = z.infer<typeof ConversionOptionsSchema>;
 
