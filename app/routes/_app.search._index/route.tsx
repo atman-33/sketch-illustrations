@@ -1,10 +1,8 @@
-import { Filter, Search, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Filter, Loader2, Search, X } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router";
 import { IllustrationCard } from "~/components/illustration-card";
-import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
 import {
   getIllustrationsByCategory,
@@ -36,7 +34,7 @@ export async function loader({ request }: Route.LoaderArgs) {
 }
 
 export default function SearchPage({ loaderData }: Route.ComponentProps) {
-  const [_searchParams, setSearchParams] = useSearchParams();
+  const [_params, setSearchParams] = useSearchParams();
   const [searchQuery, setSearchQuery] = useState(loaderData.initialQuery);
   const [selectedCategory, setSelectedCategory] = useState(
     loaderData.initialCategory
@@ -57,13 +55,11 @@ export default function SearchPage({ loaderData }: Route.ComponentProps) {
     }
 
     setSearchParams(newSearchParams);
-
-    // Simulate API delay
     // biome-ignore lint/style/noMagicNumbers: ignore
-    setTimeout(() => setIsSearching(false), 300);
+    setTimeout(() => setIsSearching(false), 200);
   };
 
-  // Debounced search effect
+  // biome-ignore lint/correctness/useExhaustiveDependencies: ignore
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       if (
@@ -73,17 +69,10 @@ export default function SearchPage({ loaderData }: Route.ComponentProps) {
         performSearch();
       }
       // biome-ignore lint/style/noMagicNumbers: ignore
-    }, 500);
-
+    }, 350);
     return () => clearTimeout(timeoutId);
-  }, [
-    searchQuery,
-    selectedCategory,
-    loaderData.initialQuery,
-    loaderData.initialCategory,
-    // biome-ignore lint/correctness/useExhaustiveDependencies: ignore
-    performSearch,
-  ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchQuery, selectedCategory]);
 
   const clearFilters = () => {
     setSearchQuery("");
@@ -91,156 +80,112 @@ export default function SearchPage({ loaderData }: Route.ComponentProps) {
     setSearchParams({});
   };
 
-  const hasFilters = searchQuery || selectedCategory;
+  const hasFilters = Boolean(searchQuery || selectedCategory);
   const hasResults = searchResults.illustrations.length > 0;
 
-  return (
-    <div className="container mx-auto px-4 py-8">
-      {/* Header */}
-      <div className="mb-8">
-        <h1 className="mb-2 font-bold text-3xl">Search Illustrations</h1>
-        <p className="text-muted-foreground">
-          Find the perfect hand-drawn illustration for your project
-        </p>
-      </div>
+  const summary = useMemo(() => {
+    if (isSearching) {
+      return "Searching…";
+    }
+    const parts: string[] = [`${searchResults.total} results`];
+    if (searchQuery) {
+      parts.push(`for "${searchQuery}"`);
+    }
+    if (selectedCategory) {
+      const name = categories.find((c) => c.slug === selectedCategory)?.name;
+      if (name) {
+        parts.push(`in ${name}`);
+      }
+    }
+    return parts.join(" ");
+  }, [
+    categories,
+    isSearching,
+    searchQuery,
+    searchResults.total,
+    selectedCategory,
+  ]);
 
-      {/* Search Form */}
-      <Card className="mb-8">
-        <CardHeader>
-          <CardTitle className="text-lg">Search & Filters</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          {/* Search Input */}
-          <div className="relative">
-            <Search className="-translate-y-1/2 absolute top-1/2 left-3 h-4 w-4 transform text-muted-foreground" />
+  return (
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 py-10 md:px-6">
+      <div className="rounded-3xl border border-slate-100 bg-white/80 p-6 shadow-lg backdrop-blur md:p-8 dark:border-slate-800 dark:bg-slate-900/80">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="space-y-2">
+            <h1 className="font-semibold text-2xl text-slate-900 tracking-tight dark:text-slate-50">
+              Search illustrations
+            </h1>
+            <p className="max-w-xl text-slate-500 text-sm dark:text-slate-400">
+              Type a keyword or tap a category. Results update instantly.
+            </p>
+          </div>
+          {hasFilters && (
+            <Button onClick={clearFilters} size="sm" variant="ghost">
+              <X className="mr-2 h-4 w-4" /> Clear filters
+            </Button>
+          )}
+        </div>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
+          <div className="relative flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm focus-within:border-purple-400 dark:border-slate-700 dark:bg-slate-900">
+            <Search className="h-5 w-5 text-slate-400" />
             <Input
-              className="pl-10"
+              className="border-0 bg-transparent p-0 text-base focus-visible:outline-none focus-visible:ring-0"
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by title, tags, or keywords..."
               value={searchQuery}
             />
+            {isSearching && (
+              <Loader2 className="h-4 w-4 animate-spin text-slate-400" />
+            )}
           </div>
-
-          {/* Category Filter */}
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <Filter className="h-4 w-4 text-muted-foreground" />
-              <span className="font-medium text-sm">Category:</span>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              <Badge
-                className="cursor-pointer hover:bg-primary/20"
-                onClick={() => setSelectedCategory("")}
-                variant={selectedCategory ? "outline" : "default"}
-              >
-                All Categories
-              </Badge>
-              {categories.map((category) => (
-                <Badge
-                  className="cursor-pointer hover:bg-primary/20"
-                  key={category.slug}
-                  onClick={() => setSelectedCategory(category.slug)}
-                  variant={
-                    selectedCategory === category.slug ? "default" : "outline"
-                  }
-                >
-                  {category.name} ({category.count})
-                </Badge>
-              ))}
-            </div>
-          </div>
-
-          {/* Clear Filters */}
-          {hasFilters && (
+          <div className="flex flex-wrap gap-2">
             <Button
-              className="w-fit"
-              onClick={clearFilters}
+              onClick={() => setSelectedCategory("")}
               size="sm"
-              variant="ghost"
+              variant={selectedCategory ? "outline" : "default"}
             >
-              <X className="mr-1 h-4 w-4" />
-              Clear all filters
+              <Filter className="mr-2 h-4 w-4" /> All
             </Button>
-          )}
-        </CardContent>
-      </Card>
-
-      {/* Search Results */}
-      <div className="space-y-6">
-        {/* Results Summary */}
-        {hasFilters && (
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-muted-foreground text-sm">
-                {isSearching
-                  ? "Searching..."
-                  : `Found ${searchResults.total} illustrations`}
-                {searchQuery && ` for "${searchQuery}"`}
-                {selectedCategory &&
-                  ` in ${categories.find((c) => c.slug === selectedCategory)?.name}`}
-              </p>
-            </div>
-          </div>
-        )}
-
-        {/* Results Grid */}
-        {hasResults ? (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {searchResults.illustrations.map((illustration) => (
-              <IllustrationCard
-                illustration={illustration}
-                key={illustration.id}
-                showQuickActions={true}
-                size="md"
-              />
+            {/** biome-ignore lint/style/noMagicNumbers: ignore */}
+            {categories.slice(0, 6).map((category) => (
+              <Button
+                key={category.slug}
+                onClick={() =>
+                  setSelectedCategory((prev) =>
+                    prev === category.slug ? "" : category.slug
+                  )
+                }
+                size="sm"
+                variant={
+                  selectedCategory === category.slug ? "default" : "outline"
+                }
+              >
+                {category.name}
+              </Button>
             ))}
           </div>
-          // biome-ignore lint/style/noNestedTernary: ignore
-        ) : hasFilters ? (
-          <div className="py-12 text-center">
-            <p className="mb-2 font-medium text-lg">No illustrations found</p>
-            <p className="mb-4 text-muted-foreground">
-              Try adjusting your search terms or filters
-            </p>
-            <Button onClick={clearFilters} variant="outline">
-              Clear filters and try again
-            </Button>
-          </div>
-        ) : (
-          <div className="py-12 text-center">
-            <p className="mb-2 font-medium text-lg">Start your search</p>
-            <p className="text-muted-foreground">
-              Enter keywords or select a category to find illustrations
-            </p>
-          </div>
-        )}
-
-        {/* Load More (for pagination) */}
-        {hasResults &&
-          searchResults.total > searchResults.illustrations.length && (
-            <div className="text-center">
-              <Button variant="outline">Load More Results</Button>
-            </div>
-          )}
+        </div>
       </div>
 
-      {/* Search Tips */}
-      {!hasFilters && (
-        <Card className="mt-12">
-          <CardHeader>
-            <CardTitle className="text-lg">Search Tips</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="space-y-2 text-muted-foreground text-sm">
-              <li>
-                • Use specific keywords like "laptop", "meeting", or "coffee"
-              </li>
-              <li>• Try different variations of your search terms</li>
-              <li>• Filter by category to narrow down results</li>
-              <li>• All illustrations are CC0 licensed and free to use</li>
-            </ul>
-          </CardContent>
-        </Card>
+      <div className="flex items-center justify-between text-slate-500 text-sm dark:text-slate-400">
+        <span>{summary}</span>
+      </div>
+
+      {hasResults ? (
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {searchResults.illustrations.map((illustration) => (
+            <IllustrationCard
+              illustration={illustration}
+              key={illustration.id}
+              showQuickActions
+              size="md"
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="rounded-3xl border border-slate-200 border-dashed p-16 text-center text-slate-400 dark:border-slate-700 dark:text-slate-500">
+          Start typing to discover hand-drawn illustrations.
+        </div>
       )}
     </div>
   );

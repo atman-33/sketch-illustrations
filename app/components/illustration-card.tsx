@@ -2,7 +2,6 @@
 import { Check, Copy, Download, Eye, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent } from "~/components/ui/card";
 import { actionUtils, conversionApi } from "~/lib/api";
@@ -15,6 +14,15 @@ type IllustrationCardProps = {
   onView?: (illustration: Illustration) => void;
 };
 
+const imageHeights: Record<
+  NonNullable<IllustrationCardProps["size"]>,
+  string
+> = {
+  sm: "h-32",
+  md: "h-40",
+  lg: "h-48",
+};
+
 export function IllustrationCard({
   illustration,
   showQuickActions = true,
@@ -24,11 +32,7 @@ export function IllustrationCard({
   const [copyStatus, setCopyStatus] = useState<ActionStatus>("idle");
   const [downloadStatus, setDownloadStatus] = useState<ActionStatus>("idle");
 
-  const sizeClasses = {
-    sm: "w-32 h-32",
-    md: "w-48 h-48",
-    lg: "w-64 h-64",
-  };
+  const previewHeight = imageHeights[size];
 
   const handleCopyPng = async () => {
     setCopyStatus("processing");
@@ -93,88 +97,89 @@ export function IllustrationCard({
   };
 
   return (
-    <Card className="group overflow-hidden transition-all hover:shadow-md">
-      <CardContent className="p-4">
-        {/* Illustration Preview */}
+    <Card className="group hover:-translate-y-1 flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white/90 shadow-sm transition hover:shadow-2xl dark:border-slate-800 dark:bg-slate-900">
+      <CardContent className="flex h-full flex-col gap-4 p-5">
         <div
-          className={`${sizeClasses[size]} mx-auto mb-4 flex items-center justify-center overflow-hidden rounded-lg bg-gray-50`}
+          className={`${previewHeight} relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 via-white to-slate-200 dark:from-slate-800 dark:via-slate-900 dark:to-slate-800`}
         >
           {/** biome-ignore lint/nursery/useImageSize: ignore */}
           {/** biome-ignore lint/performance/noImgElement: ignore */}
           <img
             alt={illustration.title}
-            className="max-h-full max-w-full object-contain"
+            className="absolute inset-0 h-full w-full scale-95 object-contain transition-transform duration-300 group-hover:scale-100"
             loading="lazy"
             src={illustration.svgPath}
           />
+          <div className="absolute top-4 left-4 rounded-full bg-black/60 px-3 py-1 font-medium text-white text-xs uppercase tracking-wide shadow-md backdrop-blur">
+            {illustration.category}
+          </div>
         </div>
 
-        {/* Title and Category */}
-        <div className="mb-3">
-          <h3 className="mb-1 line-clamp-2 font-medium text-sm">
+        <div className="flex flex-col gap-2">
+          <h3 className="line-clamp-2 font-semibold text-slate-900 transition-colors group-hover:text-purple-600 dark:text-slate-50 dark:group-hover:text-purple-300">
             {illustration.title}
           </h3>
-          <Badge className="text-xs" variant="secondary">
-            {illustration.category}
-          </Badge>
-        </div>
-
-        {/* Tags */}
-        <div className="mb-4">
-          <div className="flex flex-wrap gap-1">
+          <div className="flex flex-wrap gap-2 text-slate-500 text-xs dark:text-slate-400">
             {illustration.tags.slice(0, 3).map((tag) => (
-              <Badge className="text-xs" key={tag} variant="outline">
+              <span
+                className="rounded-full bg-slate-100 px-3 py-1 dark:bg-slate-800"
+                key={tag}
+              >
                 {tag}
-              </Badge>
+              </span>
             ))}
             {illustration.tags.length > 3 && (
-              <Badge className="text-xs" variant="outline">
+              <span className="rounded-full bg-slate-100 px-3 py-1 dark:bg-slate-800">
                 +{illustration.tags.length - 3}
-              </Badge>
+              </span>
             )}
           </div>
         </div>
 
-        {/* Quick Actions */}
         {showQuickActions && (
-          <div className="flex gap-2">
+          <div className="mt-auto flex items-center gap-2">
             <Button
-              className="flex-1"
+              className="flex-1 rounded-xl"
               disabled={copyStatus === "processing"}
               onClick={handleCopyPng}
               size="sm"
-              variant="outline"
+              variant="secondary"
             >
-              {copyStatus === "processing" && (
-                <Loader2 className="mr-1 h-3 w-3 animate-spin" />
+              {copyStatus === "processing" ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                // biome-ignore lint/style/noNestedTernary: ignore
+              ) : copyStatus === "success" ? (
+                <Check className="mr-2 h-4 w-4" />
+              ) : (
+                <Copy className="mr-2 h-4 w-4" />
               )}
-              {copyStatus === "success" && <Check className="mr-1 h-3 w-3" />}
-              {copyStatus === "idle" && <Copy className="mr-1 h-3 w-3" />}
-              Copy
+              Copy PNG
             </Button>
-
             <Button
-              className="flex-1"
+              className="flex-1 rounded-xl"
               disabled={downloadStatus === "processing"}
               onClick={handleDownloadSvg}
               size="sm"
               variant="outline"
             >
-              {downloadStatus === "processing" && (
-                <Loader2 className="mr-1 h-3 w-3 animate-spin" />
+              {downloadStatus === "processing" ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                // biome-ignore lint/style/noNestedTernary: ignore
+              ) : downloadStatus === "success" ? (
+                <Check className="mr-2 h-4 w-4" />
+              ) : (
+                <Download className="mr-2 h-4 w-4" />
               )}
-              {downloadStatus === "success" && (
-                <Check className="mr-1 h-3 w-3" />
-              )}
-              {downloadStatus === "idle" && (
-                <Download className="mr-1 h-3 w-3" />
-              )}
-              Download
+              SVG
             </Button>
-
             {onView && (
-              <Button onClick={handleView} size="sm" variant="outline">
-                <Eye className="h-3 w-3" />
+              <Button
+                className="rounded-xl"
+                onClick={handleView}
+                size="icon"
+                variant="ghost"
+              >
+                <Eye className="h-4 w-4" />
               </Button>
             )}
           </div>

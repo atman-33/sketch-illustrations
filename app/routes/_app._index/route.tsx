@@ -1,9 +1,7 @@
-import { Globe, Grid, Heart, Search, Zap } from "lucide-react";
-import { Link } from "react-router";
+import { ArrowRight, Copy, Download, Search } from "lucide-react";
+import { Form, Link } from "react-router";
 import { IllustrationCard } from "~/components/illustration-card";
-import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import {
   featuredIllustrations,
   getAllIllustrations,
@@ -27,162 +25,125 @@ export default function HomePage({ loaderData }: Route.ComponentProps) {
     loaderData;
 
   return (
-    <div className="space-y-16">
-      {/* Hero Section */}
-      <section className="py-16 text-center">
-        <h1 className="mb-6 font-bold text-4xl md:text-6xl">
-          Hand-Drawn Illustrations
-          <br />
-          <span className="text-primary">for Your Projects</span>
-        </h1>
-        <p className="mx-auto mb-8 max-w-2xl text-muted-foreground text-xl">
-          Discover beautiful, copyright-safe SVG illustrations perfect for
-          blogs, presentations, and design tools like Miro. All illustrations
-          are CC0 licensed.
-        </p>
-        <div className="flex flex-col justify-center gap-4 sm:flex-row">
-          <Link to="/search">
-            <Button className="w-full sm:w-auto" size="lg">
-              <Search className="mr-2 h-5 w-5" />
-              Start Searching
+    <div className="space-y-20">
+      <section className="relative isolate overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-900 text-white">
+        <div className="-z-10 absolute inset-0 opacity-60">
+          <div className="-translate-x-1/2 pointer-events-none absolute inset-y-0 left-1/2 blur-[120px]">
+            <div className="h-[420px] w-[420px] rounded-full bg-gradient-to-br from-purple-500/40 via-blue-500/30 to-pink-500/30" />
+          </div>
+        </div>
+        <div className="mx-auto flex max-w-4xl flex-col items-center gap-10 px-4 py-24 text-center md:py-28">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-5 py-1.5 text-white/80 text-xs uppercase tracking-[0.2em]">
+            Instant sketch library
+          </span>
+          <div className="space-y-6">
+            <h1 className="font-semibold text-4xl leading-tight tracking-tight md:text-6xl">
+              Find and copy sketch illustrations in seconds.
+            </h1>
+            <p className="mx-auto max-w-2xl text-base text-white/70 md:text-lg">
+              Search thousands of CC0 SVGs, copy them as PNG with one tap, and
+              drop them straight into your decks, whiteboards, or canvases.
+            </p>
+          </div>
+          <Form
+            action="/search"
+            className="flex w-full max-w-2xl items-center gap-2 rounded-2xl border border-white/15 bg-white/10 p-2 pl-4 backdrop-blur transition focus-within:border-white/40"
+            method="get"
+          >
+            <Search className="h-5 w-5 text-white/60" />
+            <input
+              aria-label="Search illustrations"
+              className="flex-1 bg-transparent text-base text-white placeholder:text-white/50 focus:outline-none"
+              name="q"
+              placeholder='Try "remote work" or "education"'
+              type="search"
+            />
+            <Button
+              className="rounded-xl"
+              size="lg"
+              type="submit"
+              variant="secondary"
+            >
+              Search
             </Button>
-          </Link>
-          <Link to="/categories">
-            <Button className="w-full sm:w-auto" size="lg" variant="outline">
-              <Grid className="mr-2 h-5 w-5" />
-              Browse Categories
-            </Button>
-          </Link>
+          </Form>
+          <div className="grid w-full max-w-2xl grid-cols-1 gap-3 text-left sm:grid-cols-3">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <Copy className="mb-3 h-5 w-5 text-white/60" />
+              <p className="text-sm text-white/70">
+                Copy SVG or PNG instantly with smart fallbacks.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <Search className="mb-3 h-5 w-5 text-white/60" />
+              <p className="text-sm text-white/70">
+                Filter by tags, keywords, or curated categories.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <Download className="mb-3 h-5 w-5 text-white/60" />
+              <p className="text-sm text-white/70">
+                Download originals for your design systems.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="container mx-auto px-4">
-        <h2 className="mb-12 text-center font-bold text-3xl">
-          Why Choose Our Illustrations?
-        </h2>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          <Card>
-            <CardHeader>
-              <Zap className="mb-2 h-8 w-8 text-primary" />
-              <CardTitle>Quick Copy & Download</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                One-click copy to clipboard or download as SVG/PNG. Perfect for
-                fast workflows and productivity tools.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <Globe className="mb-2 h-8 w-8 text-primary" />
-              <CardTitle>CC0 Licensed</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                All illustrations are released under CC0 license. Use them
-                freely in commercial and personal projects without attribution.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <Heart className="mb-2 h-8 w-8 text-primary" />
-              <CardTitle>Hand-Drawn Style</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Unique hand-drawn aesthetic that adds personality and warmth to
-                your content. Perfect for modern, approachable designs.
-              </p>
-            </CardContent>
-          </Card>
+      <section className="mx-auto w-full max-w-6xl px-4 md:px-6">
+        <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h2 className="font-semibold text-2xl text-slate-900 dark:text-slate-100">
+              Featured illustrations
+            </h2>
+            <p className="text-slate-500 text-sm dark:text-slate-400">
+              A rotating set of our most copied sketches.
+            </p>
+          </div>
+          <Button asChild variant="ghost">
+            <Link className="inline-flex items-center gap-2" to="/search">
+              Browse all {totalIllustrations}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
         </div>
-      </section>
-
-      {/* Featured Illustrations */}
-      <section className="container mx-auto px-4">
-        <div className="mb-8 flex items-center justify-between">
-          <h2 className="font-bold text-3xl">Featured Illustrations</h2>
-          <Link to="/search">
-            <Button variant="ghost">View All →</Button>
-          </Link>
-        </div>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {featuredIllustrations.map((illustration) => (
             <IllustrationCard
               illustration={illustration}
               key={illustration.id}
-              showQuickActions={true}
+              showQuickActions
               size="md"
             />
           ))}
         </div>
       </section>
 
-      {/* Popular Categories */}
-      <section className="container mx-auto px-4">
-        <div className="mb-8 flex items-center justify-between">
-          <h2 className="font-bold text-3xl">Popular Categories</h2>
-          <Link to="/categories">
-            <Button variant="ghost">View All →</Button>
-          </Link>
+      <section className="mx-auto w-full max-w-6xl px-4 pb-20 md:px-6">
+        <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-baseline md:justify-between">
+          <div>
+            <h2 className="font-semibold text-2xl text-slate-900 dark:text-slate-100">
+              Quick categories
+            </h2>
+            <p className="text-slate-500 text-sm dark:text-slate-400">
+              Jump straight into a visual theme.
+            </p>
+          </div>
+          <span className="text-slate-400 text-xs dark:text-slate-500">
+            {popularCategories.length} curated sets
+          </span>
         </div>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <div className="flex flex-wrap gap-3">
           {popularCategories.map((category) => (
-            <Link key={category.slug} to={`/category/${category.slug}`}>
-              <Card className="text-center transition-all hover:shadow-md">
-                <CardContent className="p-6">
-                  <h3 className="mb-2 font-semibold">{category.name}</h3>
-                  <Badge variant="secondary">{category.count} items</Badge>
-                </CardContent>
-              </Card>
+            <Link
+              className="rounded-full border border-slate-200 bg-white px-5 py-2 font-medium text-slate-600 text-sm shadow-sm transition hover:border-purple-400 hover:text-purple-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-purple-500 dark:hover:text-purple-300"
+              key={category.slug}
+              to={`/category/${category.slug}`}
+            >
+              {category.name}
             </Link>
           ))}
         </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="bg-muted/50 py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="mb-8 font-bold text-3xl">Growing Collection</h2>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div>
-              <div className="mb-2 font-bold text-4xl text-primary">
-                {totalIllustrations}+
-              </div>
-              <p className="text-muted-foreground">Total Illustrations</p>
-            </div>
-            <div>
-              <div className="mb-2 font-bold text-4xl text-primary">
-                {popularCategories.length}+
-              </div>
-              <p className="text-muted-foreground">Categories</p>
-            </div>
-            <div>
-              <div className="mb-2 font-bold text-4xl text-primary">CC0</div>
-              <p className="text-muted-foreground">License (Free to Use)</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="container mx-auto px-4 py-16 text-center">
-        <h2 className="mb-4 font-bold text-3xl">Ready to Get Started?</h2>
-        <p className="mx-auto mb-8 max-w-2xl text-muted-foreground text-xl">
-          Browse our collection of hand-drawn illustrations and find the perfect
-          one for your project.
-        </p>
-        <Link to="/search">
-          <Button size="lg">
-            <Search className="mr-2 h-5 w-5" />
-            Explore Illustrations
-          </Button>
-        </Link>
       </section>
     </div>
   );

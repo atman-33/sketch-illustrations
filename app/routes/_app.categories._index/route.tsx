@@ -1,9 +1,7 @@
-import { Grid, List, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
-import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
 import { mockCategories } from "~/lib/server/mock-data.server";
 import type { Route } from "./+types/route";
@@ -19,7 +17,6 @@ export async function loader({ request }: Route.LoaderArgs) {
 
 export default function CategoriesPage({ loaderData }: Route.ComponentProps) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const { categories } = loaderData;
 
   const filteredCategories = categories.filter((category) => {
@@ -34,112 +31,60 @@ export default function CategoriesPage({ loaderData }: Route.ComponentProps) {
   });
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      {/* Header */}
-      <div className="mb-8">
-        <h1 className="mb-2 font-bold text-3xl">Browse Categories</h1>
-        <p className="text-muted-foreground">
-          Explore our collection of hand-drawn illustrations organized by
-          category
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 py-10 md:px-6">
+      <div className="space-y-3">
+        <h1 className="font-semibold text-2xl text-slate-900 dark:text-slate-50">
+          Browse categories
+        </h1>
+        <p className="max-w-2xl text-slate-500 text-sm dark:text-slate-400">
+          Tap a theme to jump directly into matching illustrations.
         </p>
       </div>
 
-      {/* Search and Controls */}
-      <div className="mb-8 flex flex-col gap-4 sm:flex-row">
-        <div className="relative flex-1">
-          <Search className="-translate-y-1/2 absolute top-1/2 left-3 h-4 w-4 transform text-muted-foreground" />
-          <Input
-            className="pl-10"
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search categories..."
-            value={searchQuery}
-          />
-        </div>
-        <div className="flex gap-2">
-          <Button
-            onClick={() => setViewMode("grid")}
-            size="sm"
-            variant={viewMode === "grid" ? "default" : "outline"}
-          >
-            <Grid className="h-4 w-4" />
-          </Button>
-          <Button
-            onClick={() => setViewMode("list")}
-            size="sm"
-            variant={viewMode === "list" ? "default" : "outline"}
-          >
-            <List className="h-4 w-4" />
-          </Button>
-        </div>
+      <div className="relative">
+        <Search className="-translate-y-1/2 pointer-events-none absolute top-1/2 left-4 h-4 w-4 text-slate-400" />
+        <Input
+          className="h-12 rounded-2xl border-slate-200 bg-white pl-11 text-base shadow-sm focus-visible:border-purple-400 dark:border-slate-700 dark:bg-slate-900"
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search categories..."
+          value={searchQuery}
+        />
       </div>
 
-      {/* Categories Grid/List */}
-      <div
-        className={
-          viewMode === "grid"
-            ? "grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
-            : "space-y-4"
-        }
-      >
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {filteredCategories.map((category) => (
-          <Link key={category.slug} to={`/category/${category.slug}`}>
-            <Card className="group h-full transition-all hover:shadow-md">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg transition-colors group-hover:text-primary">
-                    {category.name}
-                  </CardTitle>
-                  <Badge variant="secondary">
-                    {(category.illustrationCount ?? 0).toString()} items
-                  </Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="mb-4 text-muted-foreground text-sm">
-                  {category.description ?? "Discover curated illustrations."}
-                </p>
-                <div className="flex items-center justify-between">
-                  <Button
-                    className="group-hover:bg-primary/10"
-                    size="sm"
-                    variant="ghost"
-                  >
-                    Browse →
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+          <Link
+            className="group hover:-translate-y-1 rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-sm transition hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
+            key={category.slug}
+            to={`/category/${category.slug}`}
+          >
+            <div className="flex items-center justify-between">
+              <h2 className="font-semibold text-lg text-slate-900 transition-colors group-hover:text-purple-600 dark:text-slate-100 dark:group-hover:text-purple-300">
+                {category.name}
+              </h2>
+              <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-500 text-xs dark:bg-slate-800 dark:text-slate-400">
+                {(category.illustrationCount ?? 0).toString()} items
+              </span>
+            </div>
+            <p className="mt-3 text-slate-500 text-sm dark:text-slate-400">
+              {category.description ?? "Discover curated illustrations."}
+            </p>
           </Link>
         ))}
       </div>
 
-      {/* No Results */}
       {filteredCategories.length === 0 && (
-        <div className="py-12 text-center">
-          <p className="text-muted-foreground">
-            No categories found matching "{searchQuery}"
-          </p>
+        <div className="rounded-3xl border border-slate-200 border-dashed py-12 text-center text-slate-400 dark:border-slate-700 dark:text-slate-500">
+          No categories found for "{searchQuery}".
           <Button
-            className="mt-2"
+            className="ml-2"
             onClick={() => setSearchQuery("")}
-            variant="ghost"
+            variant="link"
           >
             Clear search
           </Button>
         </div>
       )}
-
-      {/* Stats */}
-      <div className="mt-12 text-center">
-        <p className="text-muted-foreground text-sm">
-          {categories.length} categories •{" "}
-          {categories.reduce(
-            (acc, cat) => acc + (cat.illustrationCount ?? 0),
-            0
-          )}{" "}
-          total illustrations
-        </p>
-      </div>
     </div>
   );
 }
