@@ -125,11 +125,11 @@ export default function SearchPage({ loaderData }: Route.ComponentProps) {
           )}
         </div>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
-          <div className="relative flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm focus-within:border-purple-400 dark:border-slate-700 dark:bg-slate-900">
+        <div className="mt-6 grid gap-4">
+          <div className="relative flex flex-cols items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm focus-within:border-purple-400 dark:border-slate-700 dark:bg-slate-900">
             <Search className="h-5 w-5 text-slate-400" />
             <Input
-              className="border-0 bg-transparent p-0 text-base focus-visible:outline-none focus-visible:ring-0"
+              className="border-0 bg-transparent p-0 px-2 text-base focus-visible:outline-none focus-visible:ring-0"
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by title, tags, or keywords..."
               value={searchQuery}
