@@ -4,7 +4,7 @@ A React Router 7 application that showcases a curated catalog of hand-drawn, CC0
 
 ## Features
 
-- **Home experience** – Hero messaging, featured illustrations, and highlighted categories sourced from `app/lib/server/mock-data.server.ts`.
+- **Home experience** – Hero messaging, featured illustrations, and highlighted categories sourced from `app/lib/server/illustration-data.server.ts`.
 - **Category explorer** – `/categories` lists all mock categories with grid/list toggle, keyword filtering, and quick navigation into detail pages.
 - **Category detail pages** – `/category/:slug` shows all illustrations for a category, with client-side tag filters and search.
 - **Search workspace** – `/search` supports combined keyword + category filtering, showing live results and applied filter chips.
@@ -94,7 +94,7 @@ All sample illustrations live under `public/illustrations` and are treated as CC
 
 ## Future integration notes
 
-- Drizzle + Cloudflare D1 schemas exist but are not currently queried. When you connect to a live database, replace `app/lib/server/mock-data.server.ts` with loaders/actions that read from Drizzle.
+- Drizzle + Cloudflare D1 schemas exist but are not currently queried. When you connect to a live database, replace `app/lib/server/illustration-data.server.ts` with loaders/actions that read from Drizzle.
 - Authentication scaffolding (`better-auth`) is provisioned by scripts but unused by the mock UI. Remove or implement it depending on product requirements.
 - If you reintroduce server-side SVG rendering (e.g., via Resvg), keep in mind the deployment environment (Cloudflare Edge vs Node) and avoid Node-only APIs in Workers.
 

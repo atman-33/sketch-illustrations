@@ -3,17 +3,16 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
-import { mockCategories } from "~/lib/server/mock-data.server";
+import { loadCategories } from "~/lib/server/illustration-data.server";
 import type { Route } from "./+types/route";
 
-// biome-ignore lint/suspicious/useAwait: ignore
-// biome-ignore lint/correctness/noUnusedFunctionParameters: ignore
-export async function loader({ request }: Route.LoaderArgs) {
-  // In a real implementation, this would fetch from an API
+export const loader = async ({ context, request }: Route.LoaderArgs) => {
+  const categories = await loadCategories(context, request);
+
   return {
-    categories: mockCategories,
+    categories,
   };
-}
+};
 
 export default function CategoriesPage({ loaderData }: Route.ComponentProps) {
   const [searchQuery, setSearchQuery] = useState("");

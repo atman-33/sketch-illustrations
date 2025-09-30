@@ -5,33 +5,43 @@ import { IllustrationCard } from "~/components/illustration-card";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import {
-  getIllustrationsByCategory,
-  getMockSearchResults,
-  mockCategories,
-} from "~/lib/server/mock-data.server";
+  getAllIllustrations,
+  loadCategories,
+  searchIllustrations,
+} from "~/lib/server/illustration-data.server";
 import type { Route } from "./+types/route";
 
-// biome-ignore lint/suspicious/useAwait: ignore
-export async function loader({ request }: Route.LoaderArgs) {
+export const loader = async ({ context, request }: Route.LoaderArgs) => {
   const url = new URL(request.url);
   const query =
     url.searchParams.get("query") || url.searchParams.get("q") || "";
   const category = url.searchParams.get("category") || "";
 
-  const searchResults = getMockSearchResults(query, category || undefined);
-  const categories = mockCategories.map((item) => ({
+  const [searchResults, categories, allIllustrations] = await Promise.all([
+    searchIllustrations(query, category || undefined, context, request),
+    loadCategories(context, request),
+    getAllIllustrations(context, request),
+  ]);
+
+  const categoryCounts = new Map<string, number>();
+  for (const illustration of allIllustrations) {
+    const current = categoryCounts.get(illustration.category) ?? 0;
+    categoryCounts.set(illustration.category, current + 1);
+  }
+
+  const categoriesWithCounts = categories.map((item) => ({
     slug: item.slug,
     name: item.name,
-    count: getIllustrationsByCategory(item.slug).length,
+    count: categoryCounts.get(item.slug) ?? item.illustrationCount ?? 0,
   }));
 
   return {
     searchResults,
-    categories,
+    categories: categoriesWithCounts,
     initialQuery: query,
     initialCategory: category,
   };
-}
+};
 
 export default function SearchPage({ loaderData }: Route.ComponentProps) {
   const [_params, setSearchParams] = useSearchParams();

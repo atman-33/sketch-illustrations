@@ -1,4 +1,5 @@
-import { mockCategories } from "~/lib/server/mock-data.server";
+import { loadCategories } from "~/lib/server/illustration-data.server";
 import type { Route } from "./+types/route";
 
-export const loader = async (_args: Route.LoaderArgs) => mockCategories;
+export const loader = async ({ context, request }: Route.LoaderArgs) =>
+  loadCategories(context, request);

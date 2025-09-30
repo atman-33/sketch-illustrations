@@ -6,30 +6,37 @@ import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { HTTP_STATUS } from "~/lib/constants/http-status";
 import {
+  getCategoryBySlug,
   getIllustrationsByCategory,
-  getMockCategory,
-} from "~/lib/server/mock-data.server";
+} from "~/lib/server/illustration-data.server";
 import type { Route } from "./+types/route";
 
-// biome-ignore lint/suspicious/useAwait: ignore
-export async function loader({ params }: Route.LoaderArgs) {
+export const loader = async ({
+  context,
+  params,
+  request,
+}: Route.LoaderArgs) => {
   const { slug } = params;
   if (!slug) {
     throw new Response("Category not found", { status: HTTP_STATUS.notFound });
   }
 
-  const category = getMockCategory(slug);
+  const category = await getCategoryBySlug(slug, context, request);
   if (!category) {
     throw new Response("Category not found", { status: HTTP_STATUS.notFound });
   }
 
-  const illustrations = getIllustrationsByCategory(slug);
+  const illustrations = await getIllustrationsByCategory(
+    slug,
+    context,
+    request
+  );
 
   return {
     category,
     illustrations,
   };
-}
+};
 
 export default function CategoryDetailPage({
   loaderData,

@@ -1,9 +1,12 @@
 import { HTTP_STATUS } from "~/lib/constants/http-status";
-import { getIllustrationById } from "~/lib/server/mock-data.server";
+import { getIllustrationById } from "~/lib/server/illustration-data.server";
 import type { Route } from "./+types/route";
 
-// biome-ignore lint/suspicious/useAwait: ignore
-export const loader = async ({ params }: Route.LoaderArgs) => {
+export const loader = async ({
+  context,
+  params,
+  request,
+}: Route.LoaderArgs) => {
   const { id } = params;
 
   if (!id) {
@@ -12,7 +15,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
     });
   }
 
-  const illustration = getIllustrationById(id);
+  const illustration = await getIllustrationById(id, context, request);
   if (!illustration) {
     throw new Response("Illustration not found", {
       status: HTTP_STATUS.notFound,

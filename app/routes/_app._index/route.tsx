@@ -3,24 +3,27 @@ import { Form, Link } from "react-router";
 import { IllustrationCard } from "~/components/illustration-card";
 import { Button } from "~/components/ui/button";
 import {
-  featuredIllustrations,
   getAllIllustrations,
-  popularCategories,
-} from "~/lib/server/mock-data.server";
+  getFeaturedIllustrations,
+  getPopularCategories,
+} from "~/lib/server/illustration-data.server";
 import type { Route } from "./+types/route";
 
-// biome-ignore lint/suspicious/useAwait: ignore
-export async function loader() {
-  // In a real implementation, this would fetch from APIs
+export const loader = async ({ context, request }: Route.LoaderArgs) => {
+  const [featured, popular, allIllustrations] = await Promise.all([
+    getFeaturedIllustrations(context, request),
+    getPopularCategories(context, request),
+    getAllIllustrations(context, request),
+  ]);
+
   return {
-    featuredIllustrations,
-    popularCategories,
-    totalIllustrations: getAllIllustrations().length,
+    featuredIllustrations: featured,
+    popularCategories: popular,
+    totalIllustrations: allIllustrations.length,
   };
-}
+};
 
 export default function HomePage({ loaderData }: Route.ComponentProps) {
-  // biome-ignore lint/nursery/noShadow: ignore
   const { featuredIllustrations, popularCategories, totalIllustrations } =
     loaderData;
 
