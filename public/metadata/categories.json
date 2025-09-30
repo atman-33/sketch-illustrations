@@ -3,13 +3,15 @@
     "slug": "work",
     "name": "Work & Business",
     "description": "Professional illustrations perfect for business presentations, blog posts, and workplace documentation. Includes office scenes, devices, and business concepts.",
-    "icon": "briefcase"
+    "icon": "briefcase",
+    "popular": true
   },
   {
     "slug": "people",
     "name": "People & Characters",
     "description": "Human figures and character illustrations for diverse representation in your projects. Perfect for user personas, team pages, and social content.",
-    "icon": "users"
+    "icon": "users",
+    "popular": true
   },
   {
     "slug": "objects",
@@ -21,13 +23,15 @@
     "slug": "technology",
     "name": "Technology & Digital",
     "description": "Modern technology illustrations including devices, apps, cloud computing, and digital concepts. Perfect for tech blogs and product documentation.",
-    "icon": "smartphone"
+    "icon": "smartphone",
+    "popular": true
   },
   {
     "slug": "education",
     "name": "Education & Learning",
     "description": "Educational content illustrations including books, graduation, online learning, and academic concepts. Great for educational platforms and courses.",
-    "icon": "graduation-cap"
+    "icon": "graduation-cap",
+    "popular": true
   },
   {
     "slug": "nature",

@@ -18,7 +18,8 @@
     "dimensions": {
       "width": 512,
       "height": 512
-    }
+    },
+    "featured": true
   },
   {
     "id": "work-meeting",
@@ -79,7 +80,8 @@
     "dimensions": {
       "width": 512,
       "height": 512
-    }
+    },
+    "featured": true
   },
   {
     "id": "people-team",
@@ -105,7 +107,8 @@
     "dimensions": {
       "width": 512,
       "height": 512
-    }
+    },
+    "featured": true
   },
   {
     "id": "objects-plant",

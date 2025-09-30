@@ -16,6 +16,7 @@ type RawIllustration = {
     width: number;
     height: number;
   };
+  featured?: boolean;
 };
 
 type RawCategory = {
@@ -24,6 +25,7 @@ type RawCategory = {
   description?: string;
   icon?: string;
   illustration_count?: number;
+  popular?: boolean;
 };
 
 type PopularCategory = {
@@ -39,6 +41,8 @@ const CATEGORIES_PATH = "/metadata/categories.json";
 
 let cachedIllustrations: Illustration[] | undefined;
 let cachedCategories: Category[] | undefined;
+let cachedFeaturedIllustrationIds: string[] | undefined;
+let cachedPopularCategorySlugs: string[] | undefined;
 
 const normalizeIllustration = (raw: RawIllustration): Illustration => {
   const normalized = {
@@ -81,6 +85,10 @@ export const loadIllustrations = async (
     request
   );
 
+  cachedFeaturedIllustrationIds = rawIllustrations
+    .filter((raw) => raw.featured)
+    .map((raw) => raw.id);
+
   const parsed: Illustration[] = [];
   for (const raw of rawIllustrations) {
     parsed.push(normalizeIllustration(raw));
@@ -103,6 +111,10 @@ export const loadCategories = async (
     context,
     request
   );
+
+  cachedPopularCategorySlugs = rawCategories
+    .filter((raw) => raw.popular)
+    .map((raw) => raw.slug);
 
   const parsed: Category[] = [];
   for (const raw of rawCategories) {
@@ -146,19 +158,6 @@ export const getCategoriesWithCounts = async (
   return withIllustrationCounts(categories, counts);
 };
 
-export const featuredIllustrationIds = [
-  "work-laptop",
-  "people-developer",
-  "objects-coffee",
-] as const;
-
-export const popularCategorySlugs = [
-  "work",
-  "people",
-  "technology",
-  "education",
-] as const;
-
 export const getAllIllustrations = async (
   context?: AssetContext,
   request?: Request
@@ -196,7 +195,8 @@ export const getFeaturedIllustrations = async (
   request?: Request
 ): Promise<Illustration[]> => {
   const illustrations = await loadIllustrations(context, request);
-  return featuredIllustrationIds
+  const featuredIds = cachedFeaturedIllustrationIds ?? [];
+  return featuredIds
     .map((id) => illustrations.find((illustration) => illustration.id === id))
     .filter(isIllustration);
 };
@@ -207,7 +207,9 @@ export const getPopularCategories = async (
 ): Promise<PopularCategory[]> => {
   const categories = await getCategoriesWithCounts(context, request);
 
-  return popularCategorySlugs
+  const popularSlugs = cachedPopularCategorySlugs ?? [];
+
+  return popularSlugs
     .map((slug) => {
       const category = categories.find((item) => item.slug === slug);
       if (!category) {
@@ -258,6 +260,8 @@ export const searchIllustrations = async (
 export const clearIllustrationCaches = () => {
   cachedIllustrations = undefined;
   cachedCategories = undefined;
+  cachedFeaturedIllustrationIds = undefined;
+  cachedPopularCategorySlugs = undefined;
 };
 
 export type { PopularCategory };
