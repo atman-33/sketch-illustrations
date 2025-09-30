@@ -18,9 +18,9 @@ const imageHeights: Record<
   NonNullable<IllustrationCardProps["size"]>,
   string
 > = {
-  sm: "h-32",
-  md: "h-40",
-  lg: "h-48",
+  sm: "max-w-[140px]",
+  md: "max-w-[180px]",
+  lg: "max-w-[220px]",
 };
 
 export function IllustrationCard({
@@ -32,7 +32,7 @@ export function IllustrationCard({
   const [copyStatus, setCopyStatus] = useState<ActionStatus>("idle");
   const [downloadStatus, setDownloadStatus] = useState<ActionStatus>("idle");
 
-  const previewHeight = imageHeights[size];
+  const previewSizeClass = imageHeights[size];
 
   const handleCopyPng = async () => {
     setCopyStatus("processing");
@@ -98,92 +98,77 @@ export function IllustrationCard({
 
   return (
     <Card className="group hover:-translate-y-1 flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white/90 shadow-sm transition hover:shadow-2xl dark:border-slate-800 dark:bg-slate-900">
-      <CardContent className="flex h-full flex-col gap-4 p-5">
+      <CardContent className="flex h-full flex-col items-center gap-3 p-5">
         <div
-          className={`${previewHeight} relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 via-white to-slate-200 dark:from-slate-800 dark:via-slate-900 dark:to-slate-800`}
+          className={`relative mx-auto aspect-square w-full ${previewSizeClass} overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 via-white to-slate-200 dark:from-slate-800 dark:via-slate-900 dark:to-slate-800`}
         >
           {/** biome-ignore lint/nursery/useImageSize: ignore */}
           {/** biome-ignore lint/performance/noImgElement: ignore */}
           <img
             alt={illustration.title}
-            className="absolute inset-0 h-full w-full scale-95 object-contain transition-transform duration-300 group-hover:scale-100"
+            className="h-full w-full object-contain p-4 transition-transform duration-300 group-hover:scale-105"
             loading="lazy"
             src={illustration.svgPath}
           />
-          <div className="absolute top-4 left-4 rounded-full bg-black/60 px-3 py-1 font-medium text-white text-xs uppercase tracking-wide shadow-md backdrop-blur">
+          <div className="absolute top-3 left-3 rounded-full bg-black/60 px-3 py-1 font-medium text-white text-xs uppercase tracking-wide shadow-md backdrop-blur">
             {illustration.category}
           </div>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <h3 className="line-clamp-2 font-semibold text-slate-900 transition-colors group-hover:text-purple-600 dark:text-slate-50 dark:group-hover:text-purple-300">
-            {illustration.title}
-          </h3>
-          <div className="flex flex-wrap gap-2 text-slate-500 text-xs dark:text-slate-400">
-            {illustration.tags.slice(0, 3).map((tag) => (
-              <span
-                className="rounded-full bg-slate-100 px-3 py-1 dark:bg-slate-800"
-                key={tag}
-              >
-                {tag}
-              </span>
-            ))}
-            {illustration.tags.length > 3 && (
-              <span className="rounded-full bg-slate-100 px-3 py-1 dark:bg-slate-800">
-                +{illustration.tags.length - 3}
-              </span>
-            )}
-          </div>
-        </div>
-
-        {showQuickActions && (
-          <div className="mt-auto flex items-center gap-2">
-            <Button
-              className="flex-1 rounded-xl"
-              disabled={copyStatus === "processing"}
-              onClick={handleCopyPng}
-              size="sm"
-              variant="secondary"
-            >
-              {copyStatus === "processing" ? (
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                // biome-ignore lint/style/noNestedTernary: ignore
-              ) : copyStatus === "success" ? (
-                <Check className="mr-2 h-4 w-4" />
-              ) : (
-                <Copy className="mr-2 h-4 w-4" />
-              )}
-              Copy PNG
-            </Button>
-            <Button
-              className="flex-1 rounded-xl"
-              disabled={downloadStatus === "processing"}
-              onClick={handleDownloadSvg}
-              size="sm"
-              variant="outline"
-            >
-              {downloadStatus === "processing" ? (
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                // biome-ignore lint/style/noNestedTernary: ignore
-              ) : downloadStatus === "success" ? (
-                <Check className="mr-2 h-4 w-4" />
-              ) : (
-                <Download className="mr-2 h-4 w-4" />
-              )}
-              SVG
-            </Button>
-            {onView && (
+          {showQuickActions && (
+            <div className="absolute top-3 right-3 flex flex-col items-end gap-2">
               <Button
-                className="rounded-xl"
-                onClick={handleView}
+                aria-label="Copy PNG"
+                className="rounded-xl bg-white/80 text-slate-700 shadow-sm backdrop-blur transition hover:bg-white dark:bg-slate-900/70 dark:text-slate-100 dark:hover:bg-slate-900"
+                disabled={copyStatus === "processing"}
+                onClick={handleCopyPng}
                 size="icon"
                 variant="ghost"
               >
-                <Eye className="h-4 w-4" />
+                {copyStatus === "processing" ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  // biome-ignore lint/style/noNestedTernary: ignore
+                ) : copyStatus === "success" ? (
+                  <Check className="h-4 w-4" />
+                ) : (
+                  <Copy className="h-4 w-4" />
+                )}
               </Button>
-            )}
-          </div>
-        )}
+              <Button
+                aria-label="Download SVG"
+                className="rounded-xl bg-white/80 text-slate-700 shadow-sm backdrop-blur transition hover:bg-white dark:bg-slate-900/70 dark:text-slate-100 dark:hover:bg-slate-900"
+                disabled={downloadStatus === "processing"}
+                onClick={handleDownloadSvg}
+                size="icon"
+                variant="ghost"
+              >
+                {downloadStatus === "processing" ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  // biome-ignore lint/style/noNestedTernary: ignore
+                ) : downloadStatus === "success" ? (
+                  <Check className="h-4 w-4" />
+                ) : (
+                  <Download className="h-4 w-4" />
+                )}
+              </Button>
+            </div>
+          )}
+        </div>
+
+        <div className="flex items-start justify-between gap-2">
+          <h3 className="line-clamp-2 flex-1 font-semibold text-slate-900 transition-colors group-hover:text-purple-600 dark:text-slate-50 dark:group-hover:text-purple-300">
+            {illustration.title}
+          </h3>
+          {onView && (
+            <Button
+              aria-label="Preview illustration"
+              className="rounded-xl"
+              onClick={handleView}
+              size="icon"
+              variant="ghost"
+            >
+              <Eye className="h-4 w-4" />
+            </Button>
+          )}
+        </div>
       </CardContent>
     </Card>
   );
