@@ -3,70 +3,60 @@
     "slug": "work",
     "name": "Work & Business",
     "description": "Professional illustrations perfect for business presentations, blog posts, and workplace documentation. Includes office scenes, devices, and business concepts.",
-    "icon": "briefcase",
-    "illustration_count": 45
+    "icon": "briefcase"
   },
   {
     "slug": "people",
     "name": "People & Characters",
     "description": "Human figures and character illustrations for diverse representation in your projects. Perfect for user personas, team pages, and social content.",
-    "icon": "users",
-    "illustration_count": 32
+    "icon": "users"
   },
   {
     "slug": "objects",
     "name": "Objects & Items",
     "description": "Everyday objects, tools, and items that add context to your designs. From coffee cups to office supplies, find the perfect supporting element.",
-    "icon": "package",
-    "illustration_count": 28
+    "icon": "package"
   },
   {
     "slug": "technology",
     "name": "Technology & Digital",
     "description": "Modern technology illustrations including devices, apps, cloud computing, and digital concepts. Perfect for tech blogs and product documentation.",
-    "icon": "smartphone",
-    "illustration_count": 38
+    "icon": "smartphone"
   },
   {
     "slug": "education",
     "name": "Education & Learning",
     "description": "Educational content illustrations including books, graduation, online learning, and academic concepts. Great for educational platforms and courses.",
-    "icon": "graduation-cap",
-    "illustration_count": 25
+    "icon": "graduation-cap"
   },
   {
     "slug": "nature",
     "name": "Nature & Environment",
     "description": "Natural elements including plants, trees, environmental concepts, and sustainability themes. Perfect for eco-friendly and wellness content.",
-    "icon": "leaf",
-    "illustration_count": 21
+    "icon": "leaf"
   },
   {
     "slug": "health",
     "name": "Health & Wellness",
     "description": "Health, fitness, and wellness illustrations for medical, fitness, and lifestyle content. Includes medical symbols, exercise, and wellbeing concepts.",
-    "icon": "heart",
-    "illustration_count": 19
+    "icon": "heart"
   },
   {
     "slug": "finance",
     "name": "Finance & Money",
     "description": "Financial illustrations including money, banking, investments, and economic concepts. Perfect for fintech, banking, and business content.",
-    "icon": "dollar-sign",
-    "illustration_count": 23
+    "icon": "dollar-sign"
   },
   {
     "slug": "travel",
     "name": "Travel & Transportation",
     "description": "Travel and transportation illustrations including vehicles, destinations, and journey concepts. Great for travel blogs and transportation apps.",
-    "icon": "plane",
-    "illustration_count": 17
+    "icon": "plane"
   },
   {
     "slug": "food",
     "name": "Food & Beverage",
     "description": "Food and drink illustrations for restaurants, food blogs, and culinary content. From coffee to full meals, find delicious visual elements.",
-    "icon": "coffee",
-    "illustration_count": 15
+    "icon": "coffee"
   }
 ]

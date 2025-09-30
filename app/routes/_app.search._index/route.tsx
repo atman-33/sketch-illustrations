@@ -5,8 +5,7 @@ import { IllustrationCard } from "~/components/illustration-card";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import {
-  getAllIllustrations,
-  loadCategories,
+  getCategoriesWithCounts,
   searchIllustrations,
 } from "~/lib/server/illustration-data.server";
 import type { Route } from "./+types/route";
@@ -17,27 +16,14 @@ export const loader = async ({ context, request }: Route.LoaderArgs) => {
     url.searchParams.get("query") || url.searchParams.get("q") || "";
   const category = url.searchParams.get("category") || "";
 
-  const [searchResults, categories, allIllustrations] = await Promise.all([
+  const [searchResults, categories] = await Promise.all([
     searchIllustrations(query, category || undefined, context, request),
-    loadCategories(context, request),
-    getAllIllustrations(context, request),
+    getCategoriesWithCounts(context, request),
   ]);
-
-  const categoryCounts = new Map<string, number>();
-  for (const illustration of allIllustrations) {
-    const current = categoryCounts.get(illustration.category) ?? 0;
-    categoryCounts.set(illustration.category, current + 1);
-  }
-
-  const categoriesWithCounts = categories.map((item) => ({
-    slug: item.slug,
-    name: item.name,
-    count: categoryCounts.get(item.slug) ?? item.illustrationCount ?? 0,
-  }));
 
   return {
     searchResults,
-    categories: categoriesWithCounts,
+    categories,
     initialQuery: query,
     initialCategory: category,
   };

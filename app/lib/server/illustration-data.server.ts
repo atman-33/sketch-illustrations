@@ -55,17 +55,13 @@ const normalizeIllustration = (raw: RawIllustration): Illustration => {
   return IllustrationSchema.parse(normalized);
 };
 
-const normalizeCategory = (raw: RawCategory): Category => {
-  const normalized = {
+const normalizeCategory = (raw: RawCategory): Category =>
+  CategorySchema.parse({
     slug: raw.slug,
     name: raw.name,
     description: raw.description,
     icon: raw.icon,
-    illustrationCount: raw.illustration_count,
-  };
-
-  return CategorySchema.parse(normalized);
-};
+  });
 
 const isIllustration = (
   value: Illustration | undefined
@@ -117,6 +113,39 @@ export const loadCategories = async (
   return cachedCategories;
 };
 
+const buildCategoryCountMap = (
+  illustrations: Illustration[]
+): Map<string, number> => {
+  const counts = new Map<string, number>();
+  for (const illustration of illustrations) {
+    const current = counts.get(illustration.category) ?? 0;
+    counts.set(illustration.category, current + 1);
+  }
+  return counts;
+};
+
+const withIllustrationCounts = (
+  categories: Category[],
+  counts: Map<string, number>
+): Category[] =>
+  categories.map((category) => ({
+    ...category,
+    illustrationCount: counts.get(category.slug) ?? 0,
+  }));
+
+export const getCategoriesWithCounts = async (
+  context?: AssetContext,
+  request?: Request
+): Promise<Category[]> => {
+  const [categories, illustrations] = await Promise.all([
+    loadCategories(context, request),
+    loadIllustrations(context, request),
+  ]);
+
+  const counts = buildCategoryCountMap(illustrations);
+  return withIllustrationCounts(categories, counts);
+};
+
 export const featuredIllustrationIds = [
   "work-laptop",
   "people-developer",
@@ -158,7 +187,7 @@ export const getCategoryBySlug = async (
   context?: AssetContext,
   request?: Request
 ): Promise<Category | undefined> => {
-  const categories = await loadCategories(context, request);
+  const categories = await getCategoriesWithCounts(context, request);
   return categories.find((category) => category.slug === slug);
 };
 
@@ -176,22 +205,21 @@ export const getPopularCategories = async (
   context?: AssetContext,
   request?: Request
 ): Promise<PopularCategory[]> => {
-  const categories = await loadCategories(context, request);
+  const categories = await getCategoriesWithCounts(context, request);
 
-  const popular: PopularCategory[] = [];
-  for (const slug of popularCategorySlugs) {
-    const category = categories.find((item) => item.slug === slug);
-    if (!category) {
-      continue;
-    }
-    popular.push({
-      slug: category.slug,
-      name: category.name,
-      count: category.illustrationCount ?? 0,
-    });
-  }
-
-  return popular;
+  return popularCategorySlugs
+    .map((slug) => {
+      const category = categories.find((item) => item.slug === slug);
+      if (!category) {
+        return null;
+      }
+      return {
+        slug: category.slug,
+        name: category.name,
+        count: category.illustrationCount ?? 0,
+      } satisfies PopularCategory;
+    })
+    .filter(Boolean) as PopularCategory[];
 };
 
 const matchesQuery = (value: string, query: string) =>

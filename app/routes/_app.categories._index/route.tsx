@@ -3,11 +3,11 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
-import { loadCategories } from "~/lib/server/illustration-data.server";
+import { getCategoriesWithCounts } from "~/lib/server/illustration-data.server";
 import type { Route } from "./+types/route";
 
 export const loader = async ({ context, request }: Route.LoaderArgs) => {
-  const categories = await loadCategories(context, request);
+  const categories = await getCategoriesWithCounts(context, request);
 
   return {
     categories,
