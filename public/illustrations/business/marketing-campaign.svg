@@ -1,0 +1,7 @@
+<svg width="512" height="512" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" font-family="cursive" stroke="black" stroke-width="2" fill="none">
+  <path d="M20,80 L30,20 L80,20 L70,80 Z" fill="#f0f0f0" />
+  <path d="M50,20 L50,10" />
+  <path d="M40,20 L30,10" />
+  <path d="M60,20 L70,10" />
+  <text x="50" y="55" text-anchor="middle" font-size="10">SALE</text>
+</svg>

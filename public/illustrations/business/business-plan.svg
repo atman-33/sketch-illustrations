@@ -1,0 +1,8 @@
+<svg width="512" height="512" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" font-family="cursive" stroke="black" stroke-width="2" fill="none">
+  <rect x="20" y="10" width="60" height="80" rx="5" ry="5" fill="#f0f0f0" />
+  <line x1="30" y1="20" x2="70" y2="20" />
+  <line x1="30" y1="30" x2="70" y2="30" />
+  <line x1="30" y1="40" x2="70" y2="40" />
+  <line x1="30" y1="50" x2="50" y2="50" />
+  <text x="50" y="70" text-anchor="middle" font-size="10">Plan</text>
+</svg>
