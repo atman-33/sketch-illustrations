@@ -34,7 +34,7 @@ export default function HomePage({ loaderData }: Route.ComponentProps) {
           <div className="absolute top-10 left-12 h-52 w-52 rounded-full bg-gradient-to-br from-amber-200/50 via-rose-200/40 to-cyan-200/40 blur-3xl dark:from-purple-500/35 dark:via-blue-500/25 dark:to-pink-500/25" />
           <div className="absolute right-[-4rem] bottom-[-6rem] h-80 w-80 rotate-[12deg] rounded-[3rem] border-4 border-amber-300/30 border-dashed dark:border-slate-600/40" />
         </div>
-        <div className="mx-auto flex max-w-4xl flex-col items-center gap-10 px-4 py-24 text-center md:py-28">
+        <div className="mx-auto flex max-w-4xl flex-col items-center gap-10 px-4 py-8 text-center md:py-8">
           <span className="inline-flex items-center gap-2 rounded-full border-2 border-amber-300/60 bg-white/70 px-5 py-1.5 font-display text-amber-800 text-xs uppercase tracking-[0.18em] shadow-[2px_2px_0_rgba(33,33,33,0.1)] dark:border-purple-400/60 dark:bg-slate-900/60 dark:text-purple-100">
             Instant sketch library
           </span>
