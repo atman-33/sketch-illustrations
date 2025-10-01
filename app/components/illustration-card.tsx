@@ -86,10 +86,10 @@ export function IllustrationCard({
   };
 
   return (
-    <Card className="group hover:-translate-y-1 flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white/90 shadow-sm transition hover:shadow-2xl dark:border-slate-800 dark:bg-slate-900">
-      <CardContent className="flex h-full flex-col items-center gap-3 p-5">
+    <Card className="group hover:-translate-y-1 flex h-full flex-col overflow-hidden rounded-[calc(var(--radius)+1rem)] border-2 border-slate-300/60 bg-page-light shadow-[4px_4px_0_rgba(33,33,33,0.12)] transition-transform duration-200 hover:rotate-[-0.5deg] hover:shadow-[7px_7px_0_rgba(33,33,33,0.18)] dark:border-slate-700/60">
+      <CardContent className="flex h-full flex-col items-center gap-4 p-6">
         <div
-          className={`relative mx-auto aspect-square w-full ${previewSizeClass} overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 via-white to-slate-200 dark:from-slate-800 dark:via-slate-900 dark:to-slate-800`}
+          className={`relative mx-auto aspect-square w-full ${previewSizeClass} overflow-hidden rounded-[calc(var(--radius)+0.75rem)] border-2 border-slate-400/60 border-dashed bg-white/80 backdrop-blur-sm dark:border-slate-600/60 dark:bg-slate-900/60`}
         >
           {/** biome-ignore lint/nursery/useImageSize: ignore */}
           {/** biome-ignore lint/performance/noImgElement: ignore */}
@@ -103,7 +103,7 @@ export function IllustrationCard({
             <div className="absolute top-3 right-3 flex items-center gap-2">
               <Button
                 aria-label="Copy SVG"
-                className="rounded-xl bg-white/80 text-slate-700 shadow-sm backdrop-blur transition hover:bg-white dark:bg-slate-900/70 dark:text-slate-100 dark:hover:bg-slate-900"
+                className="sketch-border bg-white/90 text-slate-700 shadow-none backdrop-blur transition hover:bg-white dark:bg-slate-900/80 dark:text-slate-100 dark:hover:bg-slate-900"
                 disabled={copyStatus === "processing"}
                 onClick={handleCopySvg}
                 size="icon"
@@ -120,7 +120,7 @@ export function IllustrationCard({
               </Button>
               <Button
                 aria-label="Download SVG"
-                className="rounded-xl bg-white/80 text-slate-700 shadow-sm backdrop-blur transition hover:bg-white dark:bg-slate-900/70 dark:text-slate-100 dark:hover:bg-slate-900"
+                className="sketch-border bg-white/90 text-slate-700 shadow-none backdrop-blur transition hover:bg-white dark:bg-slate-900/80 dark:text-slate-100 dark:hover:bg-slate-900"
                 disabled={downloadStatus === "processing"}
                 onClick={handleDownloadSvg}
                 size="icon"
@@ -139,14 +139,14 @@ export function IllustrationCard({
           )}
         </div>
 
-        <div className="flex items-start justify-between gap-2">
-          <h3 className="line-clamp-2 flex-1 font-semibold text-slate-900 transition-colors group-hover:text-purple-600 dark:text-slate-50 dark:group-hover:text-purple-300">
+        <div className="flex w-full items-start justify-between gap-3">
+          <h3 className="sketch-underline line-clamp-2 flex-1 font-display text-lg text-slate-900 transition-colors group-hover:text-primary dark:text-page-foreground dark:group-hover:text-primary">
             {illustration.title}
           </h3>
           {onView && (
             <Button
               aria-label="Preview illustration"
-              className="rounded-xl"
+              className="sketch-border"
               onClick={handleView}
               size="icon"
               variant="ghost"
