@@ -29,40 +29,39 @@ export default function HomePage({ loaderData }: Route.ComponentProps) {
 
   return (
     <div className="space-y-20">
-      <section className="relative isolate overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-900 text-white">
-        <div className="-z-10 absolute inset-0 opacity-60">
-          <div className="-translate-x-1/2 pointer-events-none absolute inset-y-0 left-1/2 blur-[120px]">
-            <div className="h-[420px] w-[420px] rounded-full bg-gradient-to-br from-purple-500/40 via-blue-500/30 to-pink-500/30" />
-          </div>
+      <section className="relative isolate overflow-hidden bg-page-light text-page-foreground">
+        <div className="-z-10 pointer-events-none absolute inset-0 opacity-70">
+          <div className="absolute top-10 left-12 h-52 w-52 rounded-full bg-gradient-to-br from-amber-200/50 via-rose-200/40 to-cyan-200/40 blur-3xl dark:from-purple-500/35 dark:via-blue-500/25 dark:to-pink-500/25" />
+          <div className="absolute right-[-4rem] bottom-[-6rem] h-80 w-80 rotate-[12deg] rounded-[3rem] border-4 border-amber-300/30 border-dashed dark:border-slate-600/40" />
         </div>
         <div className="mx-auto flex max-w-4xl flex-col items-center gap-10 px-4 py-24 text-center md:py-28">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-5 py-1.5 text-white/80 text-xs uppercase tracking-[0.2em]">
+          <span className="inline-flex items-center gap-2 rounded-full border-2 border-amber-300/60 bg-white/70 px-5 py-1.5 font-display text-amber-800 text-xs uppercase tracking-[0.18em] shadow-[2px_2px_0_rgba(33,33,33,0.1)] dark:border-purple-400/60 dark:bg-slate-900/60 dark:text-purple-100">
             Instant sketch library
           </span>
           <div className="space-y-6">
-            <h1 className="font-semibold text-4xl leading-tight tracking-tight md:text-6xl">
+            <h1 className="font-display font-semibold text-4xl text-slate-900 leading-tight tracking-tight md:text-6xl dark:text-page-foreground dark:text-primary">
               Find and copy sketch illustrations in seconds.
             </h1>
-            <p className="mx-auto max-w-2xl text-base text-white/70 md:text-lg">
+            <p className="mx-auto max-w-2xl text-base text-slate-600 md:text-lg dark:text-slate-200/80">
               Search thousands of CC0 SVGs, copy them as PNG with one tap, and
               drop them straight into your decks, whiteboards, or canvases.
             </p>
           </div>
           <Form
             action="/search"
-            className="flex w-full max-w-2xl items-center gap-2 rounded-2xl border border-white/15 bg-white/10 p-2 pl-4 backdrop-blur transition focus-within:border-white/40"
+            className="sketch-border sketch-shadow flex w-full max-w-2xl items-center gap-2 rounded-2xl bg-white/80 p-2 pl-4 backdrop-blur transition focus-within:ring-2 focus-within:ring-amber-300/60 dark:bg-slate-900/60 dark:focus-within:ring-purple-300/50"
             method="get"
           >
-            <Search className="h-5 w-5 text-white/60" />
+            <Search className="h-5 w-5 text-amber-700/80 dark:text-purple-200/80" />
             <input
               aria-label="Search illustrations"
-              className="flex-1 bg-transparent text-base text-white placeholder:text-white/50 focus:outline-none"
+              className="flex-1 bg-transparent text-base text-slate-800 placeholder:text-slate-400 focus:outline-none dark:text-white dark:placeholder:text-slate-400/70"
               name="q"
               placeholder='Try "remote work" or "education"'
               type="search"
             />
             <Button
-              className="rounded-xl"
+              className="sketch-border"
               size="lg"
               type="submit"
               variant="secondary"
@@ -71,21 +70,21 @@ export default function HomePage({ loaderData }: Route.ComponentProps) {
             </Button>
           </Form>
           <div className="grid w-full max-w-2xl grid-cols-1 gap-3 text-left sm:grid-cols-3">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <Copy className="mb-3 h-5 w-5 text-white/60" />
-              <p className="text-sm text-white/70">
+            <div className="sketch-border sketch-shadow rounded-2xl bg-white/80 p-4 dark:bg-slate-900/60">
+              <Copy className="mb-3 h-5 w-5 text-amber-700/80 dark:text-purple-200/80" />
+              <p className="text-slate-700 text-sm dark:text-slate-200/80">
                 Copy SVG or PNG instantly with smart fallbacks.
               </p>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <Search className="mb-3 h-5 w-5 text-white/60" />
-              <p className="text-sm text-white/70">
+            <div className="sketch-border sketch-shadow rounded-2xl bg-white/80 p-4 dark:bg-slate-900/60">
+              <Search className="mb-3 h-5 w-5 text-amber-700/80 dark:text-purple-200/80" />
+              <p className="text-slate-700 text-sm dark:text-slate-200/80">
                 Filter by tags, keywords, or curated categories.
               </p>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <Download className="mb-3 h-5 w-5 text-white/60" />
-              <p className="text-sm text-white/70">
+            <div className="sketch-border sketch-shadow rounded-2xl bg-white/80 p-4 dark:bg-slate-900/60">
+              <Download className="mb-3 h-5 w-5 text-amber-700/80 dark:text-purple-200/80" />
+              <p className="text-slate-700 text-sm dark:text-slate-200/80">
                 Download originals for your design systems.
               </p>
             </div>
