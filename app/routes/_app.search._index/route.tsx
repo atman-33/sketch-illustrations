@@ -145,6 +145,7 @@ export default function SearchPage({ loaderData }: Route.ComponentProps) {
             {/** biome-ignore lint/style/noMagicNumbers: ignore */}
             {categories.slice(0, 6).map((category) => (
               <Button
+                className="hover:border-accent dark:hover:text-accent"
                 key={category.slug}
                 onClick={() =>
                   setSelectedCategory((prev) =>

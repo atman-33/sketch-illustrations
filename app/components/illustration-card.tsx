@@ -140,7 +140,7 @@ export function IllustrationCard({
         </div>
 
         <div className="flex w-full items-start justify-between gap-3">
-          <h3 className="sketch-underline line-clamp-2 flex-1 font-display text-lg text-slate-900 transition-colors group-hover:text-primary dark:text-page-foreground dark:group-hover:text-primary">
+          <h3 className="sketch-underline line-clamp-2 flex-1 font-display text-lg text-slate-900 transition-colors group-hover:text-primary dark:text-page-foreground dark:text-white dark:group-hover:text-primary">
             {illustration.title}
           </h3>
           {onView && (
