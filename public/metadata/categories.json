@@ -18,49 +18,5 @@
     "name": "Objects & Items",
     "description": "Everyday objects, tools, and items that add context to your designs. From coffee cups to office supplies, find the perfect supporting element.",
     "icon": "package"
-  },
-  {
-    "slug": "technology",
-    "name": "Technology & Digital",
-    "description": "Modern technology illustrations including devices, apps, cloud computing, and digital concepts. Perfect for tech blogs and product documentation.",
-    "icon": "smartphone",
-    "popular": true
-  },
-  {
-    "slug": "education",
-    "name": "Education & Learning",
-    "description": "Educational content illustrations including books, graduation, online learning, and academic concepts. Great for educational platforms and courses.",
-    "icon": "graduation-cap",
-    "popular": true
-  },
-  {
-    "slug": "nature",
-    "name": "Nature & Environment",
-    "description": "Natural elements including plants, trees, environmental concepts, and sustainability themes. Perfect for eco-friendly and wellness content.",
-    "icon": "leaf"
-  },
-  {
-    "slug": "health",
-    "name": "Health & Wellness",
-    "description": "Health, fitness, and wellness illustrations for medical, fitness, and lifestyle content. Includes medical symbols, exercise, and wellbeing concepts.",
-    "icon": "heart"
-  },
-  {
-    "slug": "finance",
-    "name": "Finance & Money",
-    "description": "Financial illustrations including money, banking, investments, and economic concepts. Perfect for fintech, banking, and business content.",
-    "icon": "dollar-sign"
-  },
-  {
-    "slug": "travel",
-    "name": "Travel & Transportation",
-    "description": "Travel and transportation illustrations including vehicles, destinations, and journey concepts. Great for travel blogs and transportation apps.",
-    "icon": "plane"
-  },
-  {
-    "slug": "food",
-    "name": "Food & Beverage",
-    "description": "Food and drink illustrations for restaurants, food blogs, and culinary content. From coffee to full meals, find delicious visual elements.",
-    "icon": "coffee"
   }
 ]

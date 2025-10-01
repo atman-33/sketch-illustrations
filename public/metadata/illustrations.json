@@ -22,46 +22,6 @@
     "featured": true
   },
   {
-    "id": "work-meeting",
-    "title": "Team Meeting",
-    "tags": [
-      "meeting",
-      "team",
-      "collaboration",
-      "business",
-      "discussion",
-      "workspace"
-    ],
-    "category": "work",
-    "license": "CC0",
-    "svg_path": "/illustrations/work/meeting.svg",
-    "created_at": "2024-01-16T14:30:00Z",
-    "dimensions": {
-      "width": 512,
-      "height": 512
-    }
-  },
-  {
-    "id": "work-presentation",
-    "title": "Business Presentation",
-    "tags": [
-      "presentation",
-      "chart",
-      "business",
-      "analytics",
-      "meeting",
-      "graph"
-    ],
-    "category": "work",
-    "license": "CC0",
-    "svg_path": "/illustrations/work/presentation.svg",
-    "created_at": "2024-01-17T09:15:00Z",
-    "dimensions": {
-      "width": 512,
-      "height": 512
-    }
-  },
-  {
     "id": "people-developer",
     "title": "Software Developer",
     "tags": [
@@ -84,19 +44,6 @@
     "featured": true
   },
   {
-    "id": "people-team",
-    "title": "Team Collaboration",
-    "tags": ["team", "collaboration", "people", "group", "work", "meeting"],
-    "category": "people",
-    "license": "CC0",
-    "svg_path": "/illustrations/people/team.svg",
-    "created_at": "2024-01-19T16:45:00Z",
-    "dimensions": {
-      "width": 512,
-      "height": 512
-    }
-  },
-  {
     "id": "objects-coffee",
     "title": "Coffee Cup",
     "tags": ["coffee", "drink", "work", "break", "cup", "beverage"],
@@ -111,102 +58,45 @@
     "featured": true
   },
   {
-    "id": "objects-plant",
-    "title": "Office Plant",
-    "tags": ["plant", "office", "decoration", "green", "workspace", "nature"],
-    "category": "objects",
+    "id": "people-happy-person",
+    "title": "Happy Person",
+    "tags": ["happy", "person", "joy", "smile"],
+    "category": "people",
     "license": "CC0",
-    "svg_path": "/illustrations/objects/plant.svg",
-    "created_at": "2024-01-21T13:00:00Z",
+    "svg_path": "/illustrations/people/happy-person.svg",
+    "created_at": "2024-01-27T10:00:00Z",
     "dimensions": {
       "width": 512,
       "height": 512
-    }
+    },
+    "featured": true
   },
   {
-    "id": "technology-smartphone",
-    "title": "Smartphone",
-    "tags": [
-      "smartphone",
-      "mobile",
-      "device",
-      "technology",
-      "communication",
-      "app"
-    ],
-    "category": "technology",
+    "id": "people-ordinary-person",
+    "title": "Ordinary Person",
+    "tags": ["ordinary", "person", "casual", "man"],
+    "category": "people",
     "license": "CC0",
-    "svg_path": "/illustrations/technology/smartphone.svg",
-    "created_at": "2024-01-22T10:15:00Z",
+    "svg_path": "/illustrations/people/ordinary-person.svg",
+    "created_at": "2024-01-27T10:00:00Z",
     "dimensions": {
       "width": 512,
       "height": 512
-    }
+    },
+    "featured": true
   },
   {
-    "id": "technology-cloud",
-    "title": "Cloud Computing",
-    "tags": [
-      "cloud",
-      "computing",
-      "technology",
-      "storage",
-      "server",
-      "internet"
-    ],
-    "category": "technology",
+    "id": "people-sad-person",
+    "title": "Sad Person",
+    "tags": ["sad", "person", "unhappy", "emotion"],
+    "category": "people",
     "license": "CC0",
-    "svg_path": "/illustrations/technology/cloud.svg",
-    "created_at": "2024-01-23T15:30:00Z",
+    "svg_path": "/illustrations/people/sad-person.svg",
+    "created_at": "2024-01-27T10:00:00Z",
     "dimensions": {
       "width": 512,
       "height": 512
-    }
-  },
-  {
-    "id": "education-book",
-    "title": "Study Book",
-    "tags": ["book", "education", "learning", "study", "knowledge", "reading"],
-    "category": "education",
-    "license": "CC0",
-    "svg_path": "/illustrations/education/book.svg",
-    "created_at": "2024-01-24T12:00:00Z",
-    "dimensions": {
-      "width": 512,
-      "height": 512
-    }
-  },
-  {
-    "id": "education-graduation",
-    "title": "Graduation Cap",
-    "tags": [
-      "graduation",
-      "education",
-      "achievement",
-      "degree",
-      "university",
-      "learning"
-    ],
-    "category": "education",
-    "license": "CC0",
-    "svg_path": "/illustrations/education/graduation.svg",
-    "created_at": "2024-01-25T14:45:00Z",
-    "dimensions": {
-      "width": 512,
-      "height": 512
-    }
-  },
-  {
-    "id": "nature-tree",
-    "title": "Growing Tree",
-    "tags": ["tree", "nature", "growth", "environment", "green", "plant"],
-    "category": "nature",
-    "license": "CC0",
-    "svg_path": "/illustrations/nature/tree.svg",
-    "created_at": "2024-01-26T09:30:00Z",
-    "dimensions": {
-      "width": 512,
-      "height": 512
-    }
+    },
+    "featured": true
   }
 ]

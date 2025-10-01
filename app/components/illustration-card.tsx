@@ -95,7 +95,7 @@ export function IllustrationCard({
           {/** biome-ignore lint/performance/noImgElement: ignore */}
           <img
             alt={illustration.title}
-            className="h-full w-full object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+            className="h-full w-full object-contain p-4 transition-transform duration-300 group-hover:scale-105 dark:bg-primary/40"
             loading="lazy"
             src={illustration.svgPath}
           />
