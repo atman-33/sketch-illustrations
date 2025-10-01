@@ -1,0 +1,7 @@
+<svg width="512" height="512" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" font-family="cursive" stroke="black" stroke-width="2" fill="none">
+  <path d="M30,80 L70,80 L75,90 L25,90 Z" fill="#d0d0d0" />
+  <line x1="50" y1="80" x2="60" y2="40" />
+  <path d="M60,40 L70,20 L40,20 L50,40 Z" fill="#f0f0f0" />
+  <path d="M40,20 L70,20 L60,10 L50,10 Z" fill="#e0e0e0" />
+  <path d="M55,40 C60,50 50,60 45,50" stroke-width="1" />
+</svg>
