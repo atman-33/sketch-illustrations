@@ -1,5 +1,5 @@
 /** biome-ignore-all lint/style/useNamingConvention: ignore */
-import { ArrowRight, Search } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import { Logo } from "~/components/logo";
 import { ThemeToggle } from "~/components/theme-toggle";
@@ -30,16 +30,6 @@ export function Header() {
 
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <Button
-              asChild
-              className="hidden md:inline-flex"
-              size="sm"
-              variant="default"
-            >
-              <Link to="/search">
-                <Search className="mr-2 h-4 w-4" /> Quick Search
-              </Link>
-            </Button>
             <Button
               asChild
               className="md:hidden"
