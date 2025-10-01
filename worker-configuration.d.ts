@@ -12,7 +12,7 @@ declare namespace Cloudflare {
 		OAUTH_GITHUB_CLIENT_SECRET: string;
 		OAUTH_GOOGLE_CLIENT_ID: string;
 		OAUTH_GOOGLE_CLIENT_SECRET: string;
-		CONTACT_EMAIL: string;
+		GITHUB_ISSUES_URL: string;
 		DB: D1Database;
 		ASSETS: Fetcher;
 	}
@@ -22,7 +22,7 @@ type StringifyValues<EnvType extends Record<string, unknown>> = {
 	[Binding in keyof EnvType]: EnvType[Binding] extends string ? EnvType[Binding] : string;
 };
 declare namespace NodeJS {
-	interface ProcessEnv extends StringifyValues<Pick<Cloudflare.Env, "VALUE_FROM_CLOUDFLARE" | "CLOUDFLARE_ACCOUNT_ID" | "CLOUDFLARE_TOKEN" | "BETTER_AUTH_SECRET" | "BETTER_AUTH_URL" | "OAUTH_GITHUB_CLIENT_ID" | "OAUTH_GITHUB_CLIENT_SECRET" | "OAUTH_GOOGLE_CLIENT_ID" | "OAUTH_GOOGLE_CLIENT_SECRET" | "CONTACT_EMAIL">> {}
+	interface ProcessEnv extends StringifyValues<Pick<Cloudflare.Env, "VALUE_FROM_CLOUDFLARE" | "CLOUDFLARE_ACCOUNT_ID" | "CLOUDFLARE_TOKEN" | "BETTER_AUTH_SECRET" | "BETTER_AUTH_URL" | "OAUTH_GITHUB_CLIENT_ID" | "OAUTH_GITHUB_CLIENT_SECRET" | "OAUTH_GOOGLE_CLIENT_ID" | "OAUTH_GOOGLE_CLIENT_SECRET" | "GITHUB_ISSUES_URL">> {}
 }
 
 // Begin runtime types

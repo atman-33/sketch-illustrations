@@ -10,7 +10,8 @@
     "slug": "objects",
     "name": "Objects & Items",
     "description": "Everyday objects, tools, and items that add context to your designs. From coffee cups to office supplies, find the perfect supporting element.",
-    "icon": "package"
+    "icon": "package",
+    "popular": true
   },
   {
     "slug": "business",

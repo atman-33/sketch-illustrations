@@ -93,6 +93,33 @@ export default function HomePage({ loaderData }: Route.ComponentProps) {
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-4 md:px-6">
+        <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-baseline md:justify-between">
+          <div>
+            <h2 className="font-semibold text-2xl text-slate-900 dark:text-slate-100">
+              Quick categories
+            </h2>
+            <p className="text-slate-500 text-sm dark:text-slate-400">
+              Jump straight into a visual theme.
+            </p>
+          </div>
+          <span className="text-slate-400 text-xs dark:text-slate-500">
+            {popularCategories.length} curated sets
+          </span>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          {popularCategories.map((category) => (
+            <Link
+              className="rounded-full border border-slate-200 bg-white px-5 py-2 font-medium text-slate-600 text-sm shadow-sm transition hover:border-purple-400 hover:text-purple-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-purple-500 dark:hover:text-purple-300"
+              key={category.slug}
+              to={`/category/${category.slug}`}
+            >
+              {category.name}
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-4 pb-20 md:px-6">
         <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="font-semibold text-2xl text-slate-900 dark:text-slate-100">
@@ -117,33 +144,6 @@ export default function HomePage({ loaderData }: Route.ComponentProps) {
               showQuickActions
               size="md"
             />
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto w-full max-w-6xl px-4 pb-20 md:px-6">
-        <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-baseline md:justify-between">
-          <div>
-            <h2 className="font-semibold text-2xl text-slate-900 dark:text-slate-100">
-              Quick categories
-            </h2>
-            <p className="text-slate-500 text-sm dark:text-slate-400">
-              Jump straight into a visual theme.
-            </p>
-          </div>
-          <span className="text-slate-400 text-xs dark:text-slate-500">
-            {popularCategories.length} curated sets
-          </span>
-        </div>
-        <div className="flex flex-wrap gap-3">
-          {popularCategories.map((category) => (
-            <Link
-              className="rounded-full border border-slate-200 bg-white px-5 py-2 font-medium text-slate-600 text-sm shadow-sm transition hover:border-purple-400 hover:text-purple-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-purple-500 dark:hover:text-purple-300"
-              key={category.slug}
-              to={`/category/${category.slug}`}
-            >
-              {category.name}
-            </Link>
           ))}
         </div>
       </section>

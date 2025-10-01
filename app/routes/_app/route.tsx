@@ -4,9 +4,9 @@ import { Header } from "~/routes/_app/components/header";
 import type { Route } from "./+types/route";
 
 export const loader = ({ context }: Route.LoaderArgs) => {
-  const contactEmail = context.cloudflare.env.CONTACT_EMAIL;
+  const githubIssuesUrl = context.cloudflare.env.GITHUB_ISSUES_URL;
   return {
-    contactEmail,
+    githubIssuesUrl,
   };
 };
 
@@ -14,7 +14,7 @@ const AppLayout = ({ loaderData }: Route.ComponentProps) => (
   <>
     <Header />
     <Outlet />
-    <Footer contactEmail={loaderData.contactEmail} />
+    <Footer githubIssuesUrl={loaderData.githubIssuesUrl} />
   </>
 );
 
