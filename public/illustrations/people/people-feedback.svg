@@ -1,0 +1,12 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="256" cy="160" r="64" stroke="#333333" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M256 224V320M224 320H288" stroke="#333333" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M256 320V448M224 448H288" stroke="#333333" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M128 192L192 128M384 192L320 128" stroke="#333333" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M64 64L192 192M320 64L448 192" stroke="#333333" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M128 64L192 128M384 64L320 128" stroke="#333333" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M64 320L192 448M320 320L448 448" stroke="#333333" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M128 320L192 384M384 320L320 384" stroke="#333333" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M256 64V192M224 128H288" stroke="#333333" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M64 256H192M320 256H448" stroke="#333333" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
