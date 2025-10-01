@@ -16,7 +16,6 @@ type RawIllustration = {
     width: number;
     height: number;
   };
-  featured?: boolean;
 };
 
 type RawCategory = {
@@ -38,10 +37,10 @@ type AssetContext = ReactRouterContext | undefined;
 
 const ILLUSTRATIONS_PATH = "/metadata/illustrations.json";
 const CATEGORIES_PATH = "/metadata/categories.json";
+const FEATURED_ILLUSTRATION_LIMIT = 16;
 
 let cachedIllustrations: Illustration[] | undefined;
 let cachedCategories: Category[] | undefined;
-let cachedFeaturedIllustrationIds: string[] | undefined;
 let cachedPopularCategorySlugs: string[] | undefined;
 
 const normalizeIllustration = (raw: RawIllustration): Illustration => {
@@ -84,10 +83,6 @@ export const loadIllustrations = async (
     context,
     request
   );
-
-  cachedFeaturedIllustrationIds = rawIllustrations
-    .filter((raw) => raw.featured)
-    .map((raw) => raw.id);
 
   const parsed: Illustration[] = [];
   for (const raw of rawIllustrations) {
@@ -195,10 +190,13 @@ export const getFeaturedIllustrations = async (
   request?: Request
 ): Promise<Illustration[]> => {
   const illustrations = await loadIllustrations(context, request);
-  const featuredIds = cachedFeaturedIllustrationIds ?? [];
-  return featuredIds
-    .map((id) => illustrations.find((illustration) => illustration.id === id))
-    .filter(isIllustration);
+  const sorted = [...illustrations].sort((first, second) => {
+    const a = first.createdAt ? new Date(first.createdAt).getTime() : 0;
+    const b = second.createdAt ? new Date(second.createdAt).getTime() : 0;
+    return b - a;
+  });
+
+  return sorted.slice(0, FEATURED_ILLUSTRATION_LIMIT).filter(isIllustration);
 };
 
 export const getPopularCategories = async (
@@ -260,7 +258,6 @@ export const searchIllustrations = async (
 export const clearIllustrationCaches = () => {
   cachedIllustrations = undefined;
   cachedCategories = undefined;
-  cachedFeaturedIllustrationIds = undefined;
   cachedPopularCategorySlugs = undefined;
 };
 

@@ -10,8 +10,7 @@
     "dimensions": {
       "width": 512,
       "height": 512
-    },
-    "featured": true
+    }
   },
   {
     "id": "people-ordinary-person",
@@ -24,8 +23,7 @@
     "dimensions": {
       "width": 512,
       "height": 512
-    },
-    "featured": true
+    }
   },
   {
     "id": "people-sad-person",
@@ -38,8 +36,7 @@
     "dimensions": {
       "width": 512,
       "height": 512
-    },
-    "featured": true
+    }
   },
   {
     "id": "business-bar-chart",
