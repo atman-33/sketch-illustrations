@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "react-router-app",
+  "name": "sketch-illustrations",
   "compatibility_date": "2025-04-04",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
