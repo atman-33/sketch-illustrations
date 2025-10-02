@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "people",
+    "name": "People & Characters",
+    "description": "Human figures and character illustrations for diverse representation in your projects. Perfect for user personas, team pages, and social content.",
+    "icon": "users",
+    "popular": true
+  },
+  {
+    "slug": "objects",
+    "name": "Objects & Items",
+    "description": "Everyday objects, tools, and items that add context to your designs. From coffee cups to office supplies, find the perfect supporting element.",
+    "icon": "package",
+    "popular": true
+  },
+  {
+    "slug": "business",
+    "name": "Business & Strategy",
+    "description": "A collection of illustrations for business concepts, strategy, and analytics.",
+    "icon": "briefcase",
+    "popular": true
+  },
+  {
+    "slug": "technology",
+    "name": "Technology",
+    "description": "Illustrations related to technology, devices, and networks.",
+    "icon": "cpu",
+    "popular": true
+  }
+]

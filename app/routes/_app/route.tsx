@@ -1,34 +1,47 @@
-import { Outlet, redirect } from 'react-router';
-import type { Route } from './+types/route';
-import { Header } from '~/routes/_app/components/header';
-import { Footer } from '~/components/layout/footer';
-import { getAuth } from '~/lib/auth/auth.server';
+import { Outlet } from "react-router";
+import { Footer } from "~/components/layout/footer";
+import { Header } from "~/routes/_app/components/header";
+import type { Route } from "./+types/route";
 
-export const loader = async ({ request, context }: Route.LoaderArgs) => {
-  // Check authentication
-  const auth = getAuth(context);
-  const session = await auth.api.getSession({ headers: request.headers });
-
-  if (!session || !session.user) {
-    // Redirect unauthenticated users to the top page
-    throw redirect('/');
-  }
-
-  const contactEmail = context.cloudflare.env.CONTACT_EMAIL;
+export const loader = ({ context }: Route.LoaderArgs) => {
+  const githubIssuesUrl = context.cloudflare.env.GITHUB_ISSUES_URL;
   return {
-    contactEmail,
-    user: session.user
+    githubIssuesUrl,
   };
 };
 
-const AppLayout = ({ loaderData }: Route.ComponentProps) => {
-  return (
-    <>
-      <Header />
-      <Outlet />
-      <Footer contactEmail={loaderData.contactEmail} />
-    </>
-  );
+export const meta: Route.MetaFunction = ({ matches }) => {
+  const rootMatch = matches.find((match) => match?.id === "root");
+  // biome-ignore lint/style/useNamingConvention: ignore
+  const rootData = rootMatch?.data as { baseURL?: string } | undefined;
+  const baseUrl = typeof rootData?.baseURL === "string" ? rootData.baseURL : "";
+  const normalizedBaseUrl = baseUrl.endsWith("/")
+    ? baseUrl.slice(0, -1)
+    : baseUrl;
+  const siteUrl = normalizedBaseUrl ? `${normalizedBaseUrl}/` : "/";
+  const title = "Sketch Illustrations - Instant CC0 Sketch Library";
+  const description =
+    "Browse featured sets, quick categories, and hero highlights to copy CC0 sketch illustrations in seconds.";
+
+  return [
+    { title },
+    { name: "description", content: description },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: siteUrl },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+  ];
 };
+
+const AppLayout = ({ loaderData }: Route.ComponentProps) => (
+  <>
+    <Header />
+    <Outlet />
+    <Footer githubIssuesUrl={loaderData.githubIssuesUrl} />
+  </>
+);
 
 export default AppLayout;

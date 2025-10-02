@@ -1,23 +1,26 @@
 import { Link } from "react-router";
 
-interface LogoProps {
+type LogoProps = {
   to: string;
   className?: string;
-}
+};
 
-export function Logo({ to, className = "" }: LogoProps) {
-  return (
-    <Link to={to} className={`flex items-center gap-2 group ${className}`}>
-      <div className="w-8 h-8 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-        <img
-          src="/favicons/favicon-32x32.png"
-          alt="Logo"
-          className="w-8 h-8"
-        />
-      </div>
-      <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-        YourApp
-      </span>
-    </Link>
-  );
-}
+export const Logo = ({ to, className = "" }: LogoProps) => (
+  <Link
+    className={`group flex items-center gap-3 font-display text-lg tracking-tight ${className}`}
+    to={to}
+  >
+    <span className="sketch-border sketch-shadow group-hover:-translate-y-0.5 flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-secondary/70 transition-transform duration-300 dark:bg-secondary/40">
+      {/** biome-ignore lint/nursery/useImageSize: ignore */}
+      {/** biome-ignore lint/performance/noImgElement: ignore */}
+      <img
+        alt="Sketch Illustrations logo"
+        className="h-full w-full object-cover mix-blend-multiply dark:mix-blend-screen"
+        src="/favicons/android-chrome-192x192.png"
+      />
+    </span>
+    <span className="text-slate-900 transition-colors duration-300 group-hover:text-primary dark:text-page-foreground dark:text-primary dark:group-hover:text-primary">
+      Sketch Illustrations
+    </span>
+  </Link>
+);

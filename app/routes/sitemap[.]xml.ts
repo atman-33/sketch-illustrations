@@ -30,9 +30,7 @@ export const loader = async () => {
         "Cache-Control": "public, max-age=3600", // 1 hour cache
       },
     });
-  } catch (error) {
-    console.error("Error generating sitemap:", error);
-
+  } catch (_error) {
     // Return minimal sitemap on error
     const fallbackUrls = await generateSitemapUrls([]);
     const fallbackContent = generateSitemapXml(fallbackUrls);

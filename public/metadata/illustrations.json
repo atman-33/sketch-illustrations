@@ -1,0 +1,1510 @@
+[
+  {
+    "id": "people-happy-person",
+    "title": "Happy Person",
+    "tags": ["happy", "person", "joy", "smile"],
+    "category": "people",
+    "license": "CC0",
+    "svg_path": "/illustrations/people/happy-person.svg",
+    "created_at": "2024-01-27T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "people-ordinary-person",
+    "title": "Ordinary Person",
+    "tags": ["ordinary", "person", "casual", "man"],
+    "category": "people",
+    "license": "CC0",
+    "svg_path": "/illustrations/people/ordinary-person.svg",
+    "created_at": "2024-01-27T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "people-sad-person",
+    "title": "Sad Person",
+    "tags": ["sad", "person", "unhappy", "emotion"],
+    "category": "people",
+    "license": "CC0",
+    "svg_path": "/illustrations/people/sad-person.svg",
+    "created_at": "2024-01-27T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-bar-chart",
+    "title": "Bar Chart",
+    "tags": ["business", "chart", "graph", "data", "analytics"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/bar-chart.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-line-chart",
+    "title": "Line Chart",
+    "tags": ["business", "chart", "graph", "data", "analytics", "growth"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/line-chart.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-pie-chart",
+    "title": "Pie Chart",
+    "tags": ["business", "chart", "graph", "data", "analytics", "shares"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/pie-chart.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-lightbulb-idea",
+    "title": "Lightbulb Idea",
+    "tags": ["business", "idea", "innovation", "lightbulb", "solution"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/lightbulb-idea.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-handshake-agreement",
+    "title": "Handshake Agreement",
+    "tags": ["business", "agreement", "partnership", "handshake", "deal"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/handshake-agreement.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-target-goal",
+    "title": "Target Goal",
+    "tags": ["business", "goal", "target", "objective", "strategy"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/target-goal.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-calendar-schedule",
+    "title": "Calendar Schedule",
+    "tags": ["business", "schedule", "calendar", "planning", "date"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/calendar-schedule.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-document-contract",
+    "title": "Document Contract",
+    "tags": ["business", "contract", "document", "agreement", "paperwork"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/document-contract.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-teamwork-collaboration",
+    "title": "Teamwork Collaboration",
+    "tags": ["business", "teamwork", "collaboration", "team", "people"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/teamwork-collaboration.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-rocket-growth",
+    "title": "Rocket Growth",
+    "tags": ["business", "growth", "rocket", "success", "startup"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/rocket-growth.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-cup-of-tea",
+    "title": "Cup Of Tea",
+    "tags": ["objects", "cup-of-tea"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/cup-of-tea.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-notebook-and-pen",
+    "title": "Notebook And Pen",
+    "tags": ["objects", "notebook-and-pen"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/notebook-and-pen.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-desk-lamp",
+    "title": "Desk Lamp",
+    "tags": ["objects", "desk-lamp"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/desk-lamp.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "people-person-thinking",
+    "title": "Person Thinking",
+    "tags": ["person", "thinking", "idea", "thought"],
+    "category": "people",
+    "license": "CC0",
+    "svg_path": "/illustrations/people/person-thinking.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "people-person-presenting",
+    "title": "Person Presenting",
+    "tags": ["person", "presenting", "presentation", "business"],
+    "category": "people",
+    "license": "CC0",
+    "svg_path": "/illustrations/people/person-presenting.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "people-group-of-people",
+    "title": "Group Of People",
+    "tags": ["group", "people", "team", "collaboration"],
+    "category": "people",
+    "license": "CC0",
+    "svg_path": "/illustrations/people/group-of-people.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-smartphone-and-laptop",
+    "title": "Smartphone And Laptop",
+    "tags": ["smartphone", "laptop", "technology", "device"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/smartphone-and-laptop.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-cloud-server",
+    "title": "Cloud Server",
+    "tags": ["cloud", "server", "technology", "hosting"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/cloud-server.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-data-network",
+    "title": "Data Network",
+    "tags": ["data", "network", "technology", "internet"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/data-network.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-artificial-intelligence",
+    "title": "Artificial Intelligence",
+    "tags": ["technology", "ai", "automation", "innovation"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/artificial-intelligence.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-big-data",
+    "title": "Big Data",
+    "tags": ["technology", "data", "analytics", "insights"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/big-data.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-blockchain",
+    "title": "Blockchain Network",
+    "tags": ["technology", "blockchain", "crypto", "security"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/blockchain.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-calendar",
+    "title": "Digital Calendar",
+    "tags": ["technology", "calendar", "schedule", "planning"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/calendar.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-chat",
+    "title": "Chat Interface",
+    "tags": ["technology", "chat", "communication", "messaging"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/chat.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-cloud",
+    "title": "Cloud Computing",
+    "tags": ["technology", "cloud", "storage", "infrastructure"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/cloud.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-cpu",
+    "title": "CPU Processor",
+    "tags": ["technology", "cpu", "hardware", "performance"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/cpu.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-data-analytics",
+    "title": "Data Analytics",
+    "tags": ["technology", "data", "analytics", "dashboard"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/data-analytics.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-database",
+    "title": "Database Server",
+    "tags": ["technology", "database", "storage", "records"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/database.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-digital-marketing",
+    "title": "Digital Marketing",
+    "tags": ["technology", "marketing", "campaign", "ads"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/digital-marketing.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-download",
+    "title": "Download Files",
+    "tags": ["technology", "download", "transfer", "files"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/download.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-email",
+    "title": "Email Inbox",
+    "tags": ["technology", "email", "communication", "messages"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/email.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-firewall",
+    "title": "Network Firewall",
+    "tags": ["technology", "firewall", "security", "protection"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/firewall.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-gpu",
+    "title": "GPU Rendering",
+    "tags": ["technology", "gpu", "graphics", "performance"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/gpu.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-iot",
+    "title": "Internet Of Things",
+    "tags": ["technology", "iot", "devices", "connected"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/iot.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-machine-learning",
+    "title": "Machine Learning",
+    "tags": ["technology", "machine-learning", "model", "ai"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/machine-learning.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-mobile-app",
+    "title": "Mobile App",
+    "tags": ["technology", "mobile", "app", "interface"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/mobile-app.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-network",
+    "title": "Computer Network",
+    "tags": ["technology", "network", "connections", "infrastructure"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/network.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-presentation",
+    "title": "Tech Presentation",
+    "tags": ["technology", "presentation", "slides", "conference"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/presentation.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-programming",
+    "title": "Programming Code",
+    "tags": ["technology", "programming", "code", "development"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/programming.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-robot",
+    "title": "Service Robot",
+    "tags": ["technology", "robot", "automation", "ai"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/robot.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-search",
+    "title": "Search Engine",
+    "tags": ["technology", "search", "finder", "interface"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/search.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-security",
+    "title": "Cybersecurity",
+    "tags": ["technology", "security", "shield", "protection"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/security.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-server",
+    "title": "Server Rack",
+    "tags": ["technology", "server", "infrastructure", "hosting"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/server.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-settings",
+    "title": "System Settings",
+    "tags": ["technology", "settings", "control", "configuration"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/settings.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-spreadsheet",
+    "title": "Spreadsheet Dashboard",
+    "tags": ["technology", "spreadsheet", "data", "charts"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/spreadsheet.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-upload",
+    "title": "Upload Files",
+    "tags": ["technology", "upload", "transfer", "cloud"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/upload.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-vr-ar",
+    "title": "VR and AR",
+    "tags": ["technology", "vr", "ar", "immersive"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/vr-ar.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "technology-web-development",
+    "title": "Web Development",
+    "tags": ["technology", "web", "development", "coding"],
+    "category": "technology",
+    "license": "CC0",
+    "svg_path": "/illustrations/technology/web-development.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-brainstorming",
+    "title": "Brainstorming",
+    "tags": ["business", "brainstorming"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/brainstorming.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-brand-identity",
+    "title": "Brand Identity",
+    "tags": ["business", "brand", "identity"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/brand-identity.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-business-analytics",
+    "title": "Business Analytics",
+    "tags": ["business", "analytics"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/business-analytics.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-business-deal",
+    "title": "Business Deal",
+    "tags": ["business", "deal"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/business-deal.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-business-plan",
+    "title": "Business Plan",
+    "tags": ["business", "plan"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/business-plan.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-business-report",
+    "title": "Business Report",
+    "tags": ["business", "report"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/business-report.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-business-strategy",
+    "title": "Business Strategy",
+    "tags": ["business", "strategy"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/business-strategy.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-competitor-analysis",
+    "title": "Competitor Analysis",
+    "tags": ["business", "competitor", "analysis"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/competitor-analysis.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-customer-satisfaction",
+    "title": "Customer Satisfaction",
+    "tags": ["business", "customer", "satisfaction"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/customer-satisfaction.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-customer-support",
+    "title": "Customer Support",
+    "tags": ["business", "customer", "support"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/customer-support.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-data-visualization",
+    "title": "Data Visualization",
+    "tags": ["business", "data", "visualization"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/data-visualization.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-decision-making",
+    "title": "Decision Making",
+    "tags": ["business", "decision", "making"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/decision-making.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-ecommerce-store",
+    "title": "Ecommerce Store",
+    "tags": ["business", "ecommerce", "store"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/ecommerce-store.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-financial-growth",
+    "title": "Financial Growth",
+    "tags": ["business", "financial", "growth"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/financial-growth.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-global-business",
+    "title": "Global Business",
+    "tags": ["business", "global"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/global-business.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-idea-generation",
+    "title": "Idea Generation",
+    "tags": ["business", "idea", "generation"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/idea-generation.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-investment",
+    "title": "Investment",
+    "tags": ["business", "investment"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/investment.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-leadership",
+    "title": "Leadership",
+    "tags": ["business", "leadership"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/leadership.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-logo-design",
+    "title": "Logo Design",
+    "tags": ["business", "logo", "design"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/logo-design.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-market-research",
+    "title": "Market Research",
+    "tags": ["business", "market", "research"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/market-research.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-marketing-campaign",
+    "title": "Marketing Campaign",
+    "tags": ["business", "marketing", "campaign"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/marketing-campaign.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-office-desk",
+    "title": "Office Desk",
+    "tags": ["business", "office", "desk"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/office-desk.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-online-shopping",
+    "title": "Online Shopping",
+    "tags": ["business", "online", "shopping"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/online-shopping.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-problem-solving",
+    "title": "Problem Solving",
+    "tags": ["business", "problem", "solving"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/problem-solving.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-product-launch",
+    "title": "Product Launch",
+    "tags": ["business", "product", "launch"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/product-launch.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-project-management",
+    "title": "Project Management",
+    "tags": ["business", "project", "management"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/project-management.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-real-estate",
+    "title": "Real Estate",
+    "tags": ["business", "real", "estate"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/real-estate.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-risk-management",
+    "title": "Risk Management",
+    "tags": ["business", "risk", "management"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/risk-management.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-seo-optimization",
+    "title": "Seo Optimization",
+    "tags": ["business", "seo", "optimization"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/seo-optimization.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-social-media-marketing",
+    "title": "Social Media Marketing",
+    "tags": ["business", "social", "media", "marketing"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/social-media-marketing.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-stock-market",
+    "title": "Stock Market",
+    "tags": ["business", "stock", "market"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/stock-market.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-supply-chain",
+    "title": "Supply Chain",
+    "tags": ["business", "supply", "chain"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/supply-chain.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-swot-analysis",
+    "title": "Swot Analysis",
+    "tags": ["business", "swot", "analysis"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/swot-analysis.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-target-audience",
+    "title": "Target Audience",
+    "tags": ["business", "target", "audience"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/target-audience.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-team-building",
+    "title": "Team Building",
+    "tags": ["business", "team", "building"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/team-building.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "business-time-management",
+    "title": "Time Management",
+    "tags": ["business", "time", "management"],
+    "category": "business",
+    "license": "CC0",
+    "svg_path": "/illustrations/business/time-management.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-briefcase",
+    "title": "Briefcase",
+    "tags": ["objects", "briefcase"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-briefcase.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-calculator",
+    "title": "Calculator",
+    "tags": ["objects", "calculator"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-calculator.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-calendar",
+    "title": "Calendar",
+    "tags": ["objects", "calendar"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-calendar.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-camera",
+    "title": "Camera",
+    "tags": ["objects", "camera"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-camera.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-chart-up",
+    "title": "Chart Up",
+    "tags": ["objects", "chart-up"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-chart-up.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-clipboard",
+    "title": "Clipboard",
+    "tags": ["objects", "clipboard"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-clipboard.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-clock",
+    "title": "Clock",
+    "tags": ["objects", "clock"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-clock.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-cloud",
+    "title": "Cloud",
+    "tags": ["objects", "cloud"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-cloud.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-database",
+    "title": "Database",
+    "tags": ["objects", "database"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-database.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-drone",
+    "title": "Drone",
+    "tags": ["objects", "drone"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-drone.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-folder",
+    "title": "Folder",
+    "tags": ["objects", "folder"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-folder.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-gear",
+    "title": "Gear",
+    "tags": ["objects", "gear"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-gear.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-headset",
+    "title": "Headset",
+    "tags": ["objects", "headset"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-headset.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-key",
+    "title": "Key",
+    "tags": ["objects", "key"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-key.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-keyboard",
+    "title": "Keyboard",
+    "tags": ["objects", "keyboard"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-keyboard.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-lightbulb",
+    "title": "Lightbulb",
+    "tags": ["objects", "lightbulb"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-lightbulb.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-lock",
+    "title": "Lock",
+    "tags": ["objects", "lock"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-lock.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-magnifying-glass",
+    "title": "Magnifying Glass",
+    "tags": ["objects", "magnifying-glass"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-magnifying-glass.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-microphone",
+    "title": "Microphone",
+    "tags": ["objects", "microphone"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-microphone.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-monitor",
+    "title": "Monitor",
+    "tags": ["objects", "monitor"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-monitor.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-mouse",
+    "title": "Mouse",
+    "tags": ["objects", "mouse"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-mouse.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-printer-3d",
+    "title": "Printer 3D",
+    "tags": ["objects", "printer-3d"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-printer-3d.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-printer",
+    "title": "Printer",
+    "tags": ["objects", "printer"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-printer.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-robot",
+    "title": "Robot",
+    "tags": ["objects", "robot"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-robot.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-router",
+    "title": "Router",
+    "tags": ["objects", "router"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-router.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-server",
+    "title": "Server",
+    "tags": ["objects", "server"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-server.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-target",
+    "title": "Target",
+    "tags": ["objects", "target"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-target.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-usb",
+    "title": "Usb",
+    "tags": ["objects", "usb"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-usb.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  },
+  {
+    "id": "objects-wifi",
+    "title": "Wifi",
+    "tags": ["objects", "wifi"],
+    "category": "objects",
+    "license": "CC0",
+    "svg_path": "/illustrations/objects/object-wifi.svg",
+    "created_at": "2025-10-01T10:00:00Z",
+    "dimensions": {
+      "width": 512,
+      "height": 512
+    }
+  }
+]

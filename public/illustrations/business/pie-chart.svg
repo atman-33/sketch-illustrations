@@ -1,0 +1,13 @@
+<svg width="512" height="512" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" font-family="cursive" stroke="black" stroke-width="0.5">
+  <style>
+    .slice1 { fill: #f0f0f0; }
+    .slice2 { fill: #d0d0d0; }
+    .slice3 { fill: #b0b0b0; }
+  </style>
+  <circle cx="50" cy="50" r="40" class="slice1" />
+  <path d="M50,50 L50,10 A40,40 0 0,1 84.64,70 L50,50" class="slice2" />
+  <path d="M50,50 L84.64,70 A40,40 0 0,1 15.36,70 L50,50" class="slice3" />
+  <text x="75" y="35" font-size="8">A</text>
+  <text x="50" y="85" font-size="8">B</text>
+  <text x="25" y="35" font-size="8">C</text>
+</svg>

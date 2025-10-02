@@ -1,0 +1,8 @@
+<svg width="512" height="512" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" font-family="cursive" stroke="black" stroke-width="2" fill="none">
+  <path d="M20,20 L80,20 L80,80 L20,80 Z" fill="#f0f0f0" />
+  <path d="M30,30 L70,30" />
+  <path d="M30,40 L70,40" />
+  <path d="M30,50 L70,50" />
+  <path d="M30,60 L50,60" />
+  <path d="M50,60 L70,70 L60,80 L50,60" stroke-width="1" fill="#d0d0d0" />
+</svg>

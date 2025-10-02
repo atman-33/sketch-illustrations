@@ -1,0 +1,7 @@
+<svg width="512" height="512" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" font-family="cursive" stroke="black" stroke-width="2" fill="none">
+  <path d="M50,10 L60,30 L40,30 Z" fill="#f0f0f0" />
+  <rect x="40" y="30" width="20" height="50" fill="#d0d0d0" />
+  <path d="M40,80 L30,90 L40,85 L50,95 L60,85 L70,90 L60,80 Z" fill="orange" />
+  <path d="M30,70 L20,80 L30,75 Z" fill="#f0f0f0" />
+  <path d="M70,70 L80,80 L70,75 Z" fill="#f0f0f0" />
+</svg>

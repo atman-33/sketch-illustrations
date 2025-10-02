@@ -1,0 +1,14 @@
+<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg" font-family="cursive" stroke="black" stroke-width="2">
+  <style>
+    .bar { fill: #f0f0f0; }
+    .bar:hover { fill: #e0e0e0; }
+  </style>
+  <rect x="50" y="200" width="80" height="250" class="bar" />
+  <rect x="180" y="150" width="80" height="300" class="bar" />
+  <rect x="310" y="100" width="80" height="350" class="bar" />
+  <line x1="30" y1="450" x2="482" y2="450" />
+  <line x1="30" y1="50" x2="30" y2="450" />
+  <text x="80" y="470">A</text>
+  <text x="210" y="470">B</text>
+  <text x="340" y="470">C</text>
+</svg>
