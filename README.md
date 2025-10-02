@@ -2,6 +2,8 @@
 
 A React Router 7 application that showcases a curated catalog of hand-drawn, CC0-licensed SVG illustrations. Users can search, filter, preview, copy, or download artwork that is optimized for presentations, whiteboards, and product mockups. All interaction currently relies on typed mock data so the experience works out of the box without external services.
 
+![main-image](./screenshots/image.png)
+
 ## Features
 
 - **Home experience** – Hero messaging, featured illustrations, and highlighted categories sourced from `app/lib/server/illustration-data.server.ts`.
