@@ -4,6 +4,11 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent } from "~/components/ui/card";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "~/components/ui/tooltip";
 import { actionUtils } from "~/lib/api";
 import type { ActionStatus, Illustration } from "~/lib/types";
 
@@ -100,41 +105,51 @@ export function IllustrationCard({
             src={illustration.svgPath}
           />
           {showQuickActions && (
-            <div className="absolute top-3 right-3 flex items-center gap-2">
-              <Button
-                aria-label="Copy SVG"
-                className="sketch-border bg-white/90 text-slate-700 shadow-none backdrop-blur transition hover:bg-white dark:bg-slate-900/80 dark:text-slate-100 dark:hover:bg-slate-900"
-                disabled={copyStatus === "processing"}
-                onClick={handleCopySvg}
-                size="icon"
-                variant="ghost"
-              >
-                {copyStatus === "processing" ? (
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                  // biome-ignore lint/style/noNestedTernary: ignore
-                ) : copyStatus === "success" ? (
-                  <Check className="h-4 w-4" />
-                ) : (
-                  <Copy className="h-4 w-4" />
-                )}
-              </Button>
-              <Button
-                aria-label="Download SVG"
-                className="sketch-border bg-white/90 text-slate-700 shadow-none backdrop-blur transition hover:bg-white dark:bg-slate-900/80 dark:text-slate-100 dark:hover:bg-slate-900"
-                disabled={downloadStatus === "processing"}
-                onClick={handleDownloadSvg}
-                size="icon"
-                variant="ghost"
-              >
-                {downloadStatus === "processing" ? (
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                  // biome-ignore lint/style/noNestedTernary: ignore
-                ) : downloadStatus === "success" ? (
-                  <Check className="h-4 w-4" />
-                ) : (
-                  <Download className="h-4 w-4" />
-                )}
-              </Button>
+            <div className="absolute top-2 right-2 flex items-center gap-2">
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    aria-label="Copy SVG"
+                    className="sketch-border bg-white/50 text-slate-700 shadow-none backdrop-blur transition hover:bg-white dark:bg-slate-900/50 dark:text-slate-100 dark:hover:bg-slate-900"
+                    disabled={copyStatus === "processing"}
+                    onClick={handleCopySvg}
+                    size="icon"
+                    variant="ghost"
+                  >
+                    {copyStatus === "processing" ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      // biome-ignore lint/style/noNestedTernary: ignore
+                    ) : copyStatus === "success" ? (
+                      <Check className="h-4 w-4" />
+                    ) : (
+                      <Copy className="h-4 w-4" />
+                    )}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent sideOffset={4}>Copy SVG</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    aria-label="Download SVG"
+                    className="sketch-border bg-white/50 text-slate-700 shadow-none backdrop-blur transition hover:bg-white dark:bg-slate-900/50 dark:text-slate-100 dark:hover:bg-slate-900"
+                    disabled={downloadStatus === "processing"}
+                    onClick={handleDownloadSvg}
+                    size="icon"
+                    variant="ghost"
+                  >
+                    {downloadStatus === "processing" ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      // biome-ignore lint/style/noNestedTernary: ignore
+                    ) : downloadStatus === "success" ? (
+                      <Check className="h-4 w-4" />
+                    ) : (
+                      <Download className="h-4 w-4" />
+                    )}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent sideOffset={4}>Download SVG</TooltipContent>
+              </Tooltip>
             </div>
           )}
         </div>
