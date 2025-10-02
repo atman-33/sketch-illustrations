@@ -9,7 +9,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "~/components/ui/tooltip";
-import { actionUtils } from "~/lib/api";
+import { actionUtils, conversionApi } from "~/lib/api";
 import type { ActionStatus, Illustration } from "~/lib/types";
 
 type IllustrationCardProps = {
@@ -39,29 +39,53 @@ export function IllustrationCard({
 
   const previewSizeClass = imageHeights[size];
 
-  const handleCopySvg = async () => {
+  const getConversionDimensions = () => {
+    const fallback = 512;
+    const limit = 2048;
+    const sourceWidth = illustration.dimensions?.width ?? fallback;
+    const sourceHeight = illustration.dimensions?.height ?? fallback;
+    const largestSide = Math.max(sourceWidth, sourceHeight);
+    const scale = largestSide > limit ? limit / largestSide : 1;
+
+    return {
+      width: Math.round(sourceWidth * scale),
+      height: Math.round(sourceHeight * scale),
+    };
+  };
+
+  const handleCopyPng = async () => {
     setCopyStatus("processing");
     try {
-      const svgContent = await actionUtils.getSvgContent(illustration.svgPath);
-      if (!svgContent) {
-        throw new Error("Failed to load SVG content");
+      const { width, height } = getConversionDimensions();
+      const response = await conversionApi.convertToPng(illustration.svgPath, {
+        width,
+        height,
+        transparent: true,
+        quality: 90,
+      });
+
+      if (!(response.success && response.data)) {
+        throw new Error(response.error || "PNG conversion failed");
       }
 
-      const success = await actionUtils.copyToClipboard(svgContent, "svg");
+      const success = await actionUtils.copyToClipboard(response.data, "png");
       if (success) {
         setCopyStatus("success");
-        toast.success("SVG copied to clipboard!");
+        toast.success("PNG copied to clipboard!");
         setTimeout(() => setCopyStatus("idle"), 2000);
       } else {
-        // Fallback to download
-        const filename = actionUtils.generateFilename(illustration, "svg");
-        actionUtils.triggerDownload(svgContent, filename);
-        toast.info("SVG downloaded (clipboard not available)");
+        const filename = actionUtils.generateFilename(
+          illustration,
+          "png",
+          `${width}x${height}`
+        );
+        actionUtils.triggerDownload(response.data, filename);
+        toast.info("PNG downloaded (clipboard not available)");
         setCopyStatus("idle");
       }
     } catch (_error) {
       setCopyStatus("error");
-      toast.error("Failed to copy SVG");
+      toast.error("Failed to copy PNG");
       setTimeout(() => setCopyStatus("idle"), 2000);
     }
   };
@@ -109,10 +133,10 @@ export function IllustrationCard({
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
-                    aria-label="Copy SVG"
+                    aria-label="Copy PNG"
                     className="sketch-border bg-white/50 text-slate-700 shadow-none backdrop-blur transition hover:bg-white dark:bg-slate-900/50 dark:text-slate-100 dark:hover:bg-slate-900"
                     disabled={copyStatus === "processing"}
-                    onClick={handleCopySvg}
+                    onClick={handleCopyPng}
                     size="icon"
                     variant="ghost"
                   >
@@ -126,7 +150,7 @@ export function IllustrationCard({
                     )}
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent sideOffset={4}>Copy SVG</TooltipContent>
+                <TooltipContent sideOffset={4}>Copy PNG</TooltipContent>
               </Tooltip>
               <Tooltip>
                 <TooltipTrigger asChild>

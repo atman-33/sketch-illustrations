@@ -134,8 +134,18 @@ const renderSvgToPng = async (
 
   try {
     const image = await loadImageFromUrl(blobUrl);
-    const targetWidth = width ?? (image.width || 512);
-    const targetHeight = height ?? (image.height || 512);
+    const naturalWidth = image.width || 512;
+    const naturalHeight = image.height || 512;
+
+    const maxWidth = width ?? naturalWidth;
+    const maxHeight = height ?? naturalHeight;
+
+    const scaleWidth = maxWidth / naturalWidth;
+    const scaleHeight = maxHeight / naturalHeight;
+    const scale = Math.min(scaleWidth, scaleHeight);
+
+    const targetWidth = Math.max(1, Math.round(naturalWidth * scale));
+    const targetHeight = Math.max(1, Math.round(naturalHeight * scale));
 
     const canvas = document.createElement("canvas");
     canvas.width = targetWidth;
